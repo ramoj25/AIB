@@ -107,16 +107,6 @@ catch {
 }
 #endregion
 
-#install Email_signature
-try {
-    Start-Process -filepath "C:\apps\AVDapps\Email_signature\Deploy-Application.exe" -ErrorAction Stop 
-    write-log "Email_signature installed successfully"
-    }
-catch {
-    $ErrorMessage = $_.Exception.message
-    write-log "Error installing Email_signature: $ErrorMessage"
-}
-#endregion
 
 #install #StartMenu
 try {
