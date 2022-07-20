@@ -107,13 +107,21 @@ catch {
 }
 #endregion
 
-#install Email_signature
+#region Time Zone Redirection
+$Name = "fEnableTimeZoneRedirection"
+$value = "1"
+# Add Registry value
 try {
-    Start-Process -filepath "C:\apps\AVDapps\Email_signature\Deploy-Application.exe" -ErrorAction Stop 
-    write-log "Email_signature installed successfully"
+    New-ItemProperty -ErrorAction Stop -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" -Name $name -Value $value -PropertyType DWORD -Force
+    if ((Get-ItemProperty "HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services").PSObject.Properties.Name -contains $name) {
+        Write-log "Added time zone redirection registry key"
     }
+    else {
+        write-log "Error locating the Teams registry key"
+    }
+}
 catch {
     $ErrorMessage = $_.Exception.message
-    write-log "Error installing Email_signature: $ErrorMessage"
+    write-log "Error adding teams registry KEY: $ErrorMessage"
 }
 #endregion
