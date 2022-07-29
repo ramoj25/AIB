@@ -134,7 +134,7 @@ catch {
 #Laps
 try {
     
-    Start-Process msiexec /i "C:\apps\AVDapps\LAPS\Laps.x64.msi" TRANSFORMS="C:\apps\AVDapps\LAPS\LAPS_6.2.0.0.mst" /qn /l*v "C:\Windows\Temp\Local_Admin_Password_Solution_6.2.0.0_EN_x64_M1-INSTALL.log"
+    Start-Process -filepath msiexec.exe -Wait -ErrorAction Stop -ArgumentList '/i', "C:\apps\AVDapps\LAPS\Laps.x64.msi", TRANSFORMS="C:\apps\AVDapps\LAPS\LAPS_6.2.0.0.mst" , '/qn','/l*v',  "C:\Windows\Temp\Local_Admin_Password_Solution_6.2.0.0_EN_x64_M1-INSTALL.log"
     Write-Log "successfully installed Laps"
 
     }
