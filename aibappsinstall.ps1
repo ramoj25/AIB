@@ -122,7 +122,7 @@ catch {
 #MSEdge settings.
 #Set-MicrosoftEdgeSetting.ps1 -RunMode Stage
 try {
-    Start-Process powershell.exe "C:\apps\AVDapps\Set-MicrosoftEdgeSetting.ps1" -RunMode CreateProcess
+    Start-Process powershell.exe  "C:\apps\AVDapps\Set-MicrosoftEdgeSetting.ps1  -RunMode Execute"
     write-log "msedge settings configured successfully"
     }
 catch {
