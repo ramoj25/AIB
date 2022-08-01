@@ -150,6 +150,7 @@ try {
     Start-Process -filepath "C:\apps\AVDapps\VCC_Wallpaper\Deploy-Application.exe" -Wait -ErrorAction Stop 
     Start-Sleep -Seconds 5
     Start-Process powershell.exe "C:\apps\AVDapps\VCC_Wallpaper\vccWALLPAPER.ps1"
+    set-itemproperty "HKCU:\Control Panel\Desktop" -Name WallPaper -Value "C:\windows\Themes\VCCWallpaper\Default.jpg"
     write-log "VCC Wallpaper successfully"
     }
 catch {
