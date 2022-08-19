@@ -203,6 +203,8 @@ Write-host 'AIB Customization: endregion Laps'
 #Onboard Windows Defender ATP.
 Write-host 'AIB Customization: Configure Defender ATP'
 try{
+$dir='C:\WINDOWS\System32\GroupPolicy\Machine\Scripts\Startup'
+New-Item -Path c:\$dir -ItemType Directory -force
 Copy-Item -path "c:\apps\AVDapps\Onboard ATP\Onboard-NonPersistentMachine.ps1" -Destination "C:\WINDOWS\System32\GroupPolicy\Machine\Scripts\Startup"
 write-log "Error copying Onboard-NonPersistentMachine : success" 
 }
