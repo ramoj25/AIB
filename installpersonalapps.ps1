@@ -100,6 +100,9 @@ catch {
 try {
     Start-Process -filepath "C:\apps\AVDapps\VCC_Templates\Deploy-Application.exe" -Wait -ErrorAction Stop 
     write-log "VCC_Templates installed successfully"
+    New-Item -path "HKCU:\Software\Microsoft\Office\16.0\Common\General\" -Force
+    set-itemproperty "HKCU:\Software\Microsoft\Office\16.0\Common\General\" -Name sharedtemplates -Value "C:\ProgramData\Microsoft\Windows\Corporate Templates"
+    write-log "VCC_Templates added to registry successfully"
     }
 catch {
     $ErrorMessage = $_.Exception.message
@@ -191,10 +194,12 @@ catch {
 try {
     Start-Process -filepath "C:\apps\AVDapps\VCC_Wallpaper\Deploy-Application.exe" -Wait -ErrorAction Stop 
     Start-Sleep -Seconds 5
-    Start-Process powershell.exe "C:\apps\AVDapps\VCC_Wallpaper\vccWALLPAPER.ps1"
-    Start-Sleep -Seconds 5
-    set-itemproperty "HKCU:\Control Panel\Desktop" -Name WallPaper -Value "C:\windows\Themes\VCCWallpaper\Default.jpg"
+    #Start-Process powershell.exe "C:\apps\AVDapps\VCC_Wallpaper\vccWALLPAPER.ps1"
     write-log "VCC Wallpaper successfully"
+    set-itemproperty "HKCU:\Control Panel\Desktop" -Name WallPaper -Value "C:\windows\Themes\VCCWallpaper\Default.jpg"
+    New-Item -path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization" -Force
+    set-itemproperty "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization" -Name LockScreenImage -Value "C:\windows\Themes\VCCWallpaper\Default.jpg"
+    write-log "VCC Wallpaper & lockscreen configured successfully."
     }
 catch {
     $ErrorMessage = $_.Exception.message
