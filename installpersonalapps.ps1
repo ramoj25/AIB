@@ -248,6 +248,7 @@ try {
     #Start-Process powershell.exe "C:\apps\AVDapps\VCC_Wallpaper\vccWALLPAPER.ps1"
     write-log "VCC Wallpaper successfully"
     write-host "VCC Wallpaper successfully"
+    New-Item -path "HKLM:\Control Panel\Desktop" -Force
     set-itemproperty "HKLM:\Control Panel\Desktop" -Name WallPaper -Value "C:\windows\Themes\VCCWallpaper\Default.jpg"
     New-Item -path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization" -Force
     set-itemproperty "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization" -Name LockScreenImage -Value "C:\windows\Themes\VCCWallpaper\Default.jpg"
