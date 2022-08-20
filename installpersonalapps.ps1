@@ -130,8 +130,8 @@ try {
     Start-Process -filepath "C:\apps\AVDapps\VCC_Templates\Deploy-Application.exe" -Wait -ErrorAction Stop 
     write-log "VCC_Templates installed successfully"
     write-host "VCC_Templates installed successfully"
-    New-Item -path "HKCU:\Software\Microsoft\Office\16.0\Common\General\" -Force
-    set-itemproperty "HKCU:\Software\Microsoft\Office\16.0\Common\General\" -Name sharedtemplates -Value "C:\ProgramData\Microsoft\Windows\Corporate Templates"
+    New-Item -path "HKLM:\Software\Microsoft\Office\16.0\Common\General\" -Force
+    set-itemproperty "HKLM:\Software\Microsoft\Office\16.0\Common\General\" -Name sharedtemplates -Value "C:\ProgramData\Microsoft\Windows\Corporate Templates"
     write-log "VCC_Templates added to registry successfully"
     write-host "VCC_Templates added to registry successfully"
     }
@@ -204,8 +204,8 @@ Write-host 'AIB Customization: endregion Laps'
 Write-host 'AIB Customization: Configure Defender ATP'
 try{
 $dir='C:\WINDOWS\System32\GroupPolicy\Machine\Scripts\Startup'
-New-Item -Path c:\$dir -ItemType Directory -force
-Copy-Item -path "c:\apps\AVDapps\Onboard ATP\Onboard-NonPersistentMachine.ps1" -Destination "C:\WINDOWS\System32\GroupPolicy\Machine\Scripts\Startup"
+New-Item -Path $dir -ItemType Directory -force
+Copy-Item -path "c:\apps\AVDapps\Onboard ATP\Onboard-NonPersistentMachine.ps1" -Destination $dir
 write-log "Error copying Onboard-NonPersistentMachine : success" 
 }
 catch{
@@ -214,7 +214,7 @@ catch{
     write-host "Error copying Onboard-NonPersistentMachine : $ErrorMessage" 
 }
 try {
-    Copy-Item -path "c:\apps\AVDapps\Onboard ATP\WindowsDefenderATPOnboardingScript.cmd" -Destination "C:\WINDOWS\System32\GroupPolicy\Machine\Scripts\Startup"
+    Copy-Item -path "c:\apps\AVDapps\Onboard ATP\WindowsDefenderATPOnboardingScript.cmd" -Destination $dir
 }
 catch {
     $ErrorMessage = $_.Exception.message
@@ -248,7 +248,7 @@ try {
     #Start-Process powershell.exe "C:\apps\AVDapps\VCC_Wallpaper\vccWALLPAPER.ps1"
     write-log "VCC Wallpaper successfully"
     write-host "VCC Wallpaper successfully"
-    set-itemproperty "HKCU:\Control Panel\Desktop" -Name WallPaper -Value "C:\windows\Themes\VCCWallpaper\Default.jpg"
+    set-itemproperty "HKLM:\Control Panel\Desktop" -Name WallPaper -Value "C:\windows\Themes\VCCWallpaper\Default.jpg"
     New-Item -path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization" -Force
     set-itemproperty "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization" -Name LockScreenImage -Value "C:\windows\Themes\VCCWallpaper\Default.jpg"
     write-log "VCC Wallpaper & lockscreen configured successfully."
