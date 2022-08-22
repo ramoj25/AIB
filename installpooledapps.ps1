@@ -51,33 +51,33 @@ catch {
 Write-host 'AIB Customization: endregion JRE'
 
 #install O365
-Write-host 'AIB Customization: Install o365'
-try {
-    Start-Process -filepath "C:\apps\AVDapps\O365\Deploy-Application.exe" -Wait -ErrorAction Stop 
-    write-log "O365 installed successfully"
-    write-host "O365 installed successfully"
-    }
-catch {
-    $ErrorMessage = $_.Exception.message
-    write-log "Error installing O365: $ErrorMessage"
-    write-host "Error installing O365: $ErrorMessage"
-}
+#Write-host 'AIB Customization: Install o365'
+#try {
+ #   Start-Process -filepath "C:\apps\AVDapps\O365\Deploy-Application.exe" -Wait -ErrorAction Stop 
+  #  write-log "O365 installed successfully"
+   # write-host "O365 installed successfully"
+   # }
+#catch {
+ #   $ErrorMessage = $_.Exception.message
+  #  write-log "Error installing O365: $ErrorMessage"
+   # write-host "Error installing O365: $ErrorMessage"
+#}
 #endregion
-Write-host 'AIB Customization: endregion JRE'
+#Write-host 'AIB Customization: endregion JRE'
 #install Office
-Write-host 'AIB Customization: Install removalSkype'
-try {
-    Start-Process -filepath "C:\apps\AVDapps\Office\Deploy-Application.exe" -Wait -ErrorAction Stop 
-    write-log "Office installed successfully"
-    write-host "Office installed successfully"
-    }
-catch {
-    $ErrorMessage = $_.Exception.message
-    write-log "Error installing Office: $ErrorMessage"
-    write-host "Error installing Office: $ErrorMessage"
-}
+#Write-host 'AIB Customization: Install removalSkype'
+#try {
+ #   Start-Process -filepath "C:\apps\AVDapps\Office\Deploy-Application.exe" -Wait -ErrorAction Stop 
+  #  write-log "Office installed successfully"
+   # write-host "Office installed successfully"
+   # }
+#catch {
+ #   $ErrorMessage = $_.Exception.message
+  #  write-log "Error installing Office: $ErrorMessage"
+   # write-host "Error installing Office: $ErrorMessage"
+#}
 #endregion
-Write-host 'AIB Customization: endregion removalskype'
+#Write-host 'AIB Customization: endregion removalskype'
 
 #install TNS_names
 Write-host 'AIB Customization: Install TNS_Names'
