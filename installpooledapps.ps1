@@ -130,8 +130,8 @@ try {
     Start-Process -filepath "C:\apps\AVDapps\VCC_Templates\Deploy-Application.exe" -Wait -ErrorAction Stop 
     write-log "VCC_Templates installed successfully"
     write-host "VCC_Templates installed successfully"
-    New-Item -path "HKLM:\Software\Microsoft\Office\16.0\Common\General\" -Force
-    set-itemproperty "HKLM:\Software\Microsoft\Office\16.0\Common\General\" -Name sharedtemplates -Value "C:\ProgramData\Microsoft\Windows\Corporate Templates"
+    New-Item -path "HKEY_USERS\.DEFAULT\Software\Microsoft\Office\16.0\Common\General\" -Name 'sharedtemplates' -Force
+    set-itemproperty "HKEY_USERS\.DEFAULT\Software\Microsoft\Office\16.0\Common\General\" -Name sharedtemplates -Value "C:\ProgramData\Microsoft\Windows\Corporate Templates"
     write-log "VCC_Templates added to registry successfully"
     write-host "VCC_Templates added to registry successfully"
     }
@@ -248,8 +248,8 @@ try {
     #Start-Process powershell.exe "C:\apps\AVDapps\VCC_Wallpaper\vccWALLPAPER.ps1"
     write-log "VCC Wallpaper successfully"
     write-host "VCC Wallpaper successfully"
-    #New-Item -path "HKLM:\Control Panel\Desktop" -Force
-    #set-itemproperty "HKLM:\Control Panel\Desktop" -Name WallPaper -Value "C:\windows\Themes\VCCWallpaper\Default.jpg"
+    New-Item -path "HKEY_USERS\.DEFAULT\Control Panel\Desktop" -Name WallPaper -force
+    set-itemproperty "HKEY_USERS\.DEFAULT\Control Panel\Desktop" -Name WallPaper -Value "C:\windows\Themes\VCCWallpaper\Default.jpg"
     New-Item -path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization" -Force
     set-itemproperty "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization" -Name LockScreenImage -Value "C:\windows\Themes\VCCWallpaper\Default.jpg"
     write-log "VCC Wallpaper & lockscreen configured successfully."
@@ -261,4 +261,44 @@ catch {
 }
 #endregion
 Write-host 'AIB Customization: endregion Wallpaper'
+#removal of inbuilt applications.
+try{
+$appxpackage =
+"Microsoft.3DBuilder,
+Microsoft.Getstarted,
+Microsoft.MicrosoftOfficeHub,
+Microsoft.MicrosoftSolitaireCollection,
+Microsoft.People,
+Microsoft.SkypeApp,
+Microsoft.WindowsCommunicationsApps,
+Microsoft.XboxApp,
+Microsoft.ZuneMusic,
+Microsoft.ZuneVideo,
+Microsoft.BingFinance,
+Microsoft.BingNews,
+Microsoft.BingSports,
+Microsoft.BingWeather,
+Microsoft.Windows.Photos,
+Microsoft.WindowsMaps,
+Microsoft.YourPhone,
+Microsoft.WindowsSoundRecorder,
+Microsoft.WindowsAlarms,
+Microsoft.GetHelp,
+Microsoft.Microsoft3Dviewer,
+Microsoft.Messaging,
+Microsoft.MixedReality.Portal,
+Microsoft.WindowsFeedbackHub,
+Microsoft.Wallet,
+Microsoft.Print3D,"
+$appxpackage=$appxpackage.Split(",")
+foreach ($appx in $appxpackage) {Get-AppxPackage $appx | Remove-AppxPackage -AllUsers}
+}
+catch{
+$ErrorMessage = $_.Exception.message
+    write-host "Error removing builtin apps: $ErrorMessage"
+}
+write-host  "AIB: removal of applications"
+#endregion of inbuilt applications.
+
+
 
