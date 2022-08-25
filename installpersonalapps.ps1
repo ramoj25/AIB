@@ -261,4 +261,38 @@ catch {
 }
 #endregion
 Write-host 'AIB Customization: endregion Wallpaper'
+#removebuiltinapps
+$apps=@(     
+    "Microsoft.Microsoft3DViewer" #Microsoft 3D Viewer
+    "Microsoft.549981C3F5F10" #Microsoft Cortana
+    "Microsoft.WindowsFeedbackHub" #Microsoft Feedback Hub
+    "Microsoft.GetHelp" #Microsoft Get Help
+    "Microsoft.ZuneMusic" #Zune or Groove Music
+    "Microsoft.WindowsMaps" #Maps
+    "Microsoft.MicrosoftSolitaireCollection" #Microsoft Solitaire Collection
+    "Microsoft.ZuneVideo" #Zune Video, Groove Video or Movies & TV
+    "Microsoft.MicrosoftOfficeHub" #Office 2016 Hub
+    "Microsoft.SkypeApp" #Skype
+    "Microsoft.MicrosoftStickyNotes" # Sticky Notes
+    "Microsoft.Getstarted" #Get Started Hub or Tips
+    "Microsoft.WindowsSoundRecorder" # Voice Recorder
+    "Microsoft.XboxApp" #Xbox
+    "Microsoft.XboxGamingOverlay" #Xbox Game Bar
+    "Microsoft.YourPhone" #Your Phone
+    "Microsoft.MixedReality.Portal" #Mixed Reality
+    "Microsoft.People" #People
+    "Microsoft.windowscommunicationsapps" #Mail
+)
+foreach ($app in $apps) {    
+    Write-host $app "Ready to remove"
+    Get-AppxPackage -Name $app -AllUsers | Remove-AppxPackage
+    Get-AppXProvisionedPackage -Online | where DisplayName -EQ $app | Remove-AppxProvisionedPackage -Online
+            
+    $appPath="$Env:LOCALAPPDATA\Packages\$app*"
+    Remove-Item $appPath -Recurse -Force -ErrorAction 0
+}
+
+#endregionbuiltinapps
+
+
 
