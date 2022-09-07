@@ -1,6 +1,6 @@
 #Naveen.S
 #region Set logging 
-$logFile = "c:\apps\" + (get-date -format 'yyyyMMdd') + '_softwareinstall.log'
+$logFile = "c:\windows\temp\" + (get-date -format 'yyyyMMdd') + '_AIBApplicationinstall.log'
 function Write-Log {
     Param($message)
     Write-Output "$(get-date -format 'yyyyMMdd HH:mm:ss') $message" | Out-File -Encoding utf8 $logFile -Append
@@ -48,36 +48,7 @@ catch {
     write-host "Error installing Netclean: $ErrorMessage"
 }
 #endregion
-Write-host 'AIB Customization: endregion JRE'
-
-#install O365
-#Write-host 'AIB Customization: Install o365'
-#try {
- #   Start-Process -filepath "C:\apps\AVDapps\O365\Deploy-Application.exe" -Wait -ErrorAction Stop 
-  #  write-log "O365 installed successfully"
-   # write-host "O365 installed successfully"
-   # }
-#catch {
- #   $ErrorMessage = $_.Exception.message
-  #  write-log "Error installing O365: $ErrorMessage"
-   # write-host "Error installing O365: $ErrorMessage"
-#}
-#endregion
-#Write-host 'AIB Customization: endregion JRE'
-#install Office
-#Write-host 'AIB Customization: Install removalSkype'
-#try {
- #   Start-Process -filepath "C:\apps\AVDapps\Office\Deploy-Application.exe" -Wait -ErrorAction Stop 
-  #  write-log "Office installed successfully"
-   # write-host "Office installed successfully"
-   # }
-#catch {
- #   $ErrorMessage = $_.Exception.message
-  #  write-log "Error installing Office: $ErrorMessage"
-   # write-host "Error installing Office: $ErrorMessage"
-#}
-#endregion
-#Write-host 'AIB Customization: endregion removalskype'
+Write-host 'AIB Customization: endregion NetClean'
 
 #install TNS_names
 Write-host 'AIB Customization: Install TNS_Names'
@@ -154,18 +125,6 @@ catch {
     write-log "Error setting up start menu: $ErrorMessage"
 }
 #end region.
-
-#MSEdge settings.
-# #Set-MicrosoftEdgeSetting.ps1 -RunMode Stage
-# try {
-#     Start-Process powershell.exe  "C:\apps\AVDapps\Set-MicrosoftEdgeSetting.ps1  -RunMode Execute"
-#     write-log "msedge settings configured successfully"
-#     }
-# catch {
-#     $ErrorMessage = $_.Exception.message
-#     write-log "Error configuring msedge settings: $ErrorMessage"
-# }
-# #end region.
 
 #Laps
 Write-host 'AIB Customization: Install Laps'
@@ -248,8 +207,6 @@ try {
     #Start-Process powershell.exe "C:\apps\AVDapps\VCC_Wallpaper\vccWALLPAPER.ps1"
     write-log "VCC Wallpaper successfully"
     write-host "VCC Wallpaper successfully"
-    New-Item -path "HKEY_USERS\.DEFAULT\Control Panel\Desktop" -Name WallPaper -force
-    set-itemproperty "HKEY_USERS\.DEFAULT\Control Panel\Desktop" -Name WallPaper -Value "C:\windows\Themes\VCCWallpaper\Default.jpg"
     New-Item -path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization" -Force
     set-itemproperty "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization" -Name LockScreenImage -Value "C:\windows\Themes\VCCWallpaper\Default.jpg"
     write-log "VCC Wallpaper & lockscreen configured successfully."
