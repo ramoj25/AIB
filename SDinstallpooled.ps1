@@ -7,19 +7,6 @@ function Write-Log {
 }
 #endregion
 
-#install AIP
-Write-host 'AIB Customization: Install AIP'
-try {
-    Start-Process -filepath "C:\apps\AVD_SD_Apps\AIP\Deploy-Application.exe" -Wait -ErrorAction Stop 
-    write-log "AIP installed successfully"
-    write-host "AIP installed successfully"
-    }
-catch {
-    $ErrorMessage = $_.Exception.message
-    write-log "Error installing AIP: $ErrorMessage"
-    Write-host "Error installing AIP: $ErrorMessage"
-}
-#endregion
 
 #install JRE
 Write-host 'AIB Customization: Install JRE'
@@ -35,6 +22,23 @@ catch {
 }
 #endregion
 Write-host 'AIB Customization: EndRegion JRE'
+
+
+#install AIP
+Write-host 'AIB Customization: Install AIP'
+try {
+    Start-Process -filepath "C:\apps\AVD_SD_Apps\AIP\DistributionFiles\Windows\Microsoft AIP 2.13.49\Deploy-Application.exe" -Wait -ErrorAction Stop 
+    write-log "AIP installed successfully"
+    write-host "AIP installed successfully"
+    }
+catch {
+    $ErrorMessage = $_.Exception.message
+    write-log "Error installing AIP: $ErrorMessage"
+    Write-host "Error installing AIP: $ErrorMessage"
+}
+#endregion
+
+
 #install Netclean
 Write-host 'AIB Customization: Install NetClean'
 try {
@@ -51,22 +55,6 @@ catch {
 Write-host 'AIB Customization: endregion NetClean'
 
 
-Write-host 'AIB Customization: Install SAP'
-try {
-    Start-Process -filepath "C:\apps\AVD_SD_Apps\SAP\DistributionFiles\Windows\SAP GUI 7.6 P8\Deploy-Application.exe" -Wait -ErrorAction Stop 
-    write-log "SAP installed successfully"
-    write-host "SAP installed successfully"
-    }
-catch {
-    $ErrorMessage = $_.Exception.message
-    write-log "Error installing SAP: $ErrorMessage"
-    write-host "Error installing SAP: $ErrorMessage"
-}
-#endregion
-Write-host 'AIB Customization: EndRegion SAP'
-
-
-
 #install TNS_names
 Write-host 'AIB Customization: Install TNS_Names'
 try {
@@ -81,6 +69,22 @@ catch {
 }
 #endregion
 Write-host 'AIB Customization: endregion TNS_Names'
+
+
+#install Bomgar
+Write-host 'AIB Customization: Install Bomgar'
+try {
+    Start-Process -filepath msiexec.exe -Wait -ErrorAction Stop -ArgumentList '/i', "C:\apps\AVD_SD_Apps\Bomgar\o\bomgar-scc-win64.msi", "KEY_INFO=w0gdc30y87ej6857zy761jj5x8h8j858e1wi7zec408c90", '/qn','/l*v',  "C:\Windows\Temp\Bomgar-INSTALL.log"
+    write-log "TNS_names installed successfully"
+    write-host "TNS_names installed successfully"
+    }
+catch {
+    $ErrorMessage = $_.Exception.message
+    write-log "Error installing TNS_names: $ErrorMessage"
+    write-host "Error installing TNS_names: $ErrorMessage"
+}
+#endregion
+Write-host 'AIB Customization: endregion Bomgar'
 
 
 Write-host 'AIB Customization: Install Lotusnotes'
@@ -230,7 +234,7 @@ Write-host 'AIB Customization: endregion defender ATP'
 Write-host 'AIB Customization: install optimized teams'
 
 try {
-    Start-Process -filepath "C:\apps\AVD_SD_Apps\AVDTeams\Deploy-Application.exe" -Wait -ErrorAction Stop 
+    Start-Process -filepath "C:\apps\AVD_SD_Apps\AVDTeams\DistributionFiles\Windows\Microsoft Teams for AVD 1.5\Deploy-Application.exe" -Wait -ErrorAction Stop 
     write-log "AVD Teams installed successfully."
     write-host "AVD Teams installed successfully."
     }
@@ -241,6 +245,40 @@ catch {
 }
 #endregion of teams.
 Write-host 'AIB Customization: endregion optimized teams'
+
+#install Terminal 
+Write-host 'AIB Customization: Install Terminal2.0'
+try {
+    Start-Process -filepath msiexec.exe -Wait -ErrorAction Stop -ArgumentList '/i', "`"C:\apps\AVD_SD_Apps\Terminal 2.0\DistributionFiles\Windows\Terminal 2.0\2.0\source\Terminal_2.0.msi`"", '/qn','/l*v',  "C:\Windows\Temp\Terminal_2.0_EN_x86_M1-INSTALL.log"
+    write-log "Terminal installed successfully"
+    write-host "Terminal installed successfully"
+    }
+catch {
+    $ErrorMessage = $_.Exception.message
+    write-log "Error installing Terminal: $ErrorMessage"
+    write-host "Error installing Terminal: $ErrorMessage"
+}
+
+Write-host 'AIB Customization: EndRegion Terminal'
+#endregion SAP
+
+
+
+#install SAP 
+Write-host 'AIB Customization: Install SAP'
+try {
+    Start-Process -filepath "C:\apps\AVD_SD_Apps\SAP\DistributionFiles\Windows\SAP GUI 7.6 P8\Deploy-Application.exe" -Wait -ErrorAction Stop 
+    write-log "SAP installed successfully"
+    write-host "SAP installed successfully"
+    }
+catch {
+    $ErrorMessage = $_.Exception.message
+    write-log "Error installing SAP: $ErrorMessage"
+    write-host "Error installing SAP: $ErrorMessage"
+}
+
+Write-host 'AIB Customization: EndRegion SAP'
+#endregion SAP
 
 #install VCC wallpaper
 Write-host 'AIB Customization: Configure Wallpaper'
