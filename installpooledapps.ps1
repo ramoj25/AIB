@@ -246,7 +246,7 @@ Microsoft.Messaging,
 Microsoft.MixedReality.Portal,
 Microsoft.WindowsFeedbackHub,
 Microsoft.Wallet,
-Microsoft.Print3D,"
+Microsoft.Print3D"
 $appxpackage=$appxpackage.Split(",")
 foreach ($appx in $appxpackage) {Get-AppxPackage $appx | Remove-AppxPackage -AllUsers}
 }
