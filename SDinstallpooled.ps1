@@ -67,9 +67,8 @@ catch {
     write-log "Error installing TNS_names: $ErrorMessage"
     write-host "Error installing TNS_names: $ErrorMessage"
 }
-#endregion
 Write-host 'AIB Customization: endregion TNS_Names'
-
+#endregion
 
 #install Bomgar
 Write-host 'AIB Customization: Install Bomgar'
@@ -279,6 +278,134 @@ catch {
 
 Write-host 'AIB Customization: EndRegion SAP'
 #endregion SAP
+#install C++
+Write-host 'AIB Customization: Install C++'
+try {
+    Start-Process -filepath "C:\apps\AVD_SD_Apps\App-1881\C++ 2019 Redistributable\Deploy-Application.exe" -Wait -ErrorAction Stop 
+    write-log "C++ installed successfully"
+    write-host "C++ installed successfully"
+    }
+catch {
+    $ErrorMessage = $_.Exception.message
+    write-log "Error installing C++: $ErrorMessage"
+    write-host "Error installing C++: $ErrorMessage"
+}
+
+Write-host 'AIB Customization: EndRegion C++'
+#endregion C++
+#install NETFramework
+Write-host 'AIB Customization: Install NETFramework'
+try {
+    Start-Process -filepath "C:\apps\AVD_SD_Apps\App-1881\NETFramework\Deploy-Application.exe" -Wait -ErrorAction Stop 
+    write-log "NETFramework installed successfully"
+    write-host "NETFramework installed successfully"
+    }
+catch {
+    $ErrorMessage = $_.Exception.message
+    write-log "Error installing NETFramework: $ErrorMessage"
+    write-host "Error installing NETFramework: $ErrorMessage"
+}
+
+Write-host 'AIB Customization: EndRegion NETFramework'
+#endregion NETFramework
+#install Phython
+Write-host 'AIB Customization: Install Phython'
+try {
+    Start-Process -filepath "C:\apps\AVD_SD_Apps\App-1881\Phython\Deploy-Application.exe" -Wait -ErrorAction Stop 
+    write-log "NETFramework installed successfully"
+    write-host "NETFramework installed successfully"
+    }
+catch {
+    $ErrorMessage = $_.Exception.message
+    write-log "Error installing Phython: $ErrorMessage"
+    write-host "Error installing Phython: $ErrorMessage"
+}
+
+Write-host 'AIB Customization: EndRegion Phython'
+#endregion Phython
+
+
+
+#install App-1881
+Write-host 'AIB Customization: Install app-1881'
+try {
+    Start-Process -filepath "C:\apps\AVD_SD_Apps\App-1881\Elektra\Deploy-Application.exe" -Wait -ErrorAction Stop 
+    write-log "app-1881 installed successfully"
+    write-host "app-1881 installed successfully"
+    }
+catch {
+    $ErrorMessage = $_.Exception.message
+    write-log "Error installing app-1881: $ErrorMessage"
+    write-host "Error installing app-1881: $ErrorMessage"
+}
+
+Write-host 'AIB Customization: EndRegion app-1881'
+#endregion App-1881
+
+
+#install CM4D
+Write-host 'AIB Customization: Install CM4D'
+try {
+    Start-Process -filepath "C:\apps\AVD_SD_Apps\CM4D\DistributionFiles\Windows\ATS CM4D 25.0.21182 M2\Deploy-Application.exe" -Wait -ErrorAction Stop 
+    write-log "CM4D installed successfully"
+    write-host "CM4D installed successfully"
+    }
+catch {
+    $ErrorMessage = $_.Exception.message
+    write-log "Error installing CM4D: $ErrorMessage"
+    write-host "Error installing CM4D: $ErrorMessage"
+}
+
+Write-host 'AIB Customization: EndRegion CM4D'
+#endregion CM4D
+#install CPP client
+Write-host 'AIB Customization: Install CPP client'
+try {
+    Start-Process -filepath "C:\apps\AVD_SD_Apps\CPP client\DistributionFiles\Windows\VCC CPP Client 4.0.0.1 M2\Deploy-Application.exe" -Wait -ErrorAction Stop 
+    write-log "CPP client installed successfully"
+    write-host "CPP client installed successfully"
+    }
+catch {
+    $ErrorMessage = $_.Exception.message
+    write-log "Error installing CPP client: $ErrorMessage"
+    write-host "Error installing CPP client: $ErrorMessage"
+}
+
+Write-host 'AIB Customization: EndRegion CPP client'
+#endregion CPP client
+
+#install Chrome
+Write-host 'AIB Customization: Install Chrome'
+try {
+    Start-Process -filepath "C:\apps\AVD_SD_Apps\Google Chrome 81.0.4044.138\Deploy-Application.exe" -Wait -ErrorAction Stop 
+    write-log "Chrome installed successfully"
+    write-host "Chrome installed successfully"
+    }
+catch {
+    $ErrorMessage = $_.Exception.message
+    write-log "Error installing Chrome: $ErrorMessage"
+    write-host "Error installing Chrome: $ErrorMessage"
+}
+
+Write-host 'AIB Customization: EndRegion Chrome'
+#endregion Chrome
+
+#install Printmgr
+Write-host 'AIB Customization: Install Printmgr'
+try {
+    Start-Process -filepath "C:\apps\AVD_SD_Apps\Print Manager\DistributionFiles\Windows\LRS Personal Print Manager With Pullprint 103.0.21.803\Deploy-Application.exe" -Wait -ErrorAction Stop 
+    write-log "Printmgr installed successfully"
+    write-host "Printmgr installed successfully"
+    }
+catch {
+    $ErrorMessage = $_.Exception.message
+    write-log "Error installing Printmgr: $ErrorMessage"
+    write-host "Error installing Printmgr: $ErrorMessage"
+}
+
+Write-host 'AIB Customization: EndRegion Printmgr'
+#endregion Printmgr
+
 
 #install VCC wallpaper
 Write-host 'AIB Customization: Configure Wallpaper'
@@ -305,8 +432,6 @@ $appxpackage =
 Microsoft.Getstarted,
 Microsoft.MicrosoftOfficeHub,
 Microsoft.MicrosoftSolitaireCollection,
-Microsoft.People,
-Microsoft.SkypeApp,
 Microsoft.WindowsCommunicationsApps,
 Microsoft.XboxApp,
 Microsoft.ZuneMusic,
@@ -315,18 +440,15 @@ Microsoft.BingFinance,
 Microsoft.BingNews,
 Microsoft.BingSports,
 Microsoft.BingWeather,
-Microsoft.Windows.Photos,
 Microsoft.WindowsMaps,
 Microsoft.YourPhone,
-Microsoft.WindowsSoundRecorder,
-Microsoft.WindowsAlarms,
 Microsoft.GetHelp,
 Microsoft.Microsoft3Dviewer,
 Microsoft.Messaging,
 Microsoft.MixedReality.Portal,
 Microsoft.WindowsFeedbackHub,
 Microsoft.Wallet,
-Microsoft.Print3D,"
+Microsoft.Print3D"
 $appxpackage=$appxpackage.Split(",")
 foreach ($appx in $appxpackage) {Get-AppxPackage $appx | Remove-AppxPackage -AllUsers}
 }
