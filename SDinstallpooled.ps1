@@ -117,7 +117,7 @@ Write-host 'AIB Customization: EndRegion Lotusnotes'
 
 Write-host 'AIB Customization: IBM personal communication1'
 try {
-    Invoke-Expression -Command  "cmd.exe /C cscript.exe 'C:\AVD_SD_Apps\IBM\a2\install.vbs'"
+    Invoke-Expression -Command  "cmd.exe /C cscript.exe 'C:\apps\AVD_SD_Apps\IBM\a2\install.vbs'"
     write-host "IBM personal installed successfully"
     }
 catch {
@@ -129,7 +129,7 @@ Write-Host 'AIB customization: IBM personal communications end region'
 
 Write-host 'AIB Customization: IBM personal communication2'
 try {
-    Invoke-Expression -Command  "cmd.exe /C cscript.exe 'C:\AVD_SD_Apps\IBM\a3\install.vbs'"
+    Invoke-Expression -Command  "cmd.exe /C cscript.exe 'C:\apps\AVD_SD_Apps\IBM\a3\install.vbs'"
     write-host "IBM personal installed successfully"
     }
 catch {
