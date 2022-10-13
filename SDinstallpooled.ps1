@@ -307,21 +307,7 @@ catch {
 
 Write-host 'AIB Customization: EndRegion SAP'
 #endregion SAP
-#install C++
-Write-host 'AIB Customization: Install C++'
-try {
-    Start-Process -filepath "C:\apps\AVD_SD_Apps\App-1881\C++ 2019 Redistributable\Deploy-Application.exe" -Wait -ErrorAction Stop 
-    write-log "C++ installed successfully"
-    write-host "C++ installed successfully"
-    }
-catch {
-    $ErrorMessage = $_.Exception.message
-    write-log "Error installing C++: $ErrorMessage"
-    write-host "Error installing C++: $ErrorMessage"
-}
 
-Write-host 'AIB Customization: EndRegion C++'
-#endregion C++
 #install NETFramework
 Write-host 'AIB Customization: Install NETFramework'
 try {
@@ -337,6 +323,21 @@ catch {
 
 Write-host 'AIB Customization: EndRegion NETFramework'
 #endregion NETFramework
+#install C++
+Write-host 'AIB Customization: Install C++'
+try {
+    Start-Process -filepath "C:\apps\AVD_SD_Apps\App-1881\C++ 2019 Redistributable\Deploy-Application.exe" -Wait -ErrorAction Stop 
+    write-log "C++ installed successfully"
+    write-host "C++ installed successfully"
+    }
+catch {
+    $ErrorMessage = $_.Exception.message
+    write-log "Error installing C++: $ErrorMessage"
+    write-host "Error installing C++: $ErrorMessage"
+}
+
+Write-host 'AIB Customization: EndRegion C++'
+#endregion C++
 #install Phython
 Write-host 'AIB Customization: Install Phython'
 try {
@@ -434,6 +435,22 @@ catch {
 
 Write-host 'AIB Customization: EndRegion Printmgr'
 #endregion Printmgr
+#install bomgarrep
+Write-host 'AIB Customization: Install Bomgarrep'
+try {
+    Start-Process -filepath "C:\apps\AVD_SD_Apps\bomgarrep.exe" -Wait -ErrorAction Stop 
+    write-log "bomgarrep installed successfully"
+    write-host "bomgarrep installed successfully"
+    }
+catch {
+    $ErrorMessage = $_.Exception.message
+    write-log "Error installing bomgarrep: $ErrorMessage"
+    write-host "Error installing bomgarrep: $ErrorMessage"
+}
+
+Write-host 'AIB Customization: EndRegion bomgarrep'
+#endregion bomgarrep
+
 
 
 #install VCC wallpaper
