@@ -472,36 +472,36 @@ catch {
 #endregion
 Write-host 'AIB Customization: endregion Wallpaper'
 #removal of inbuilt applications.
-try{
-$appxpackage =
-"Microsoft.3DBuilder,
-Microsoft.Getstarted,
-Microsoft.MicrosoftOfficeHub,
-Microsoft.MicrosoftSolitaireCollection,
-Microsoft.WindowsCommunicationsApps,
-Microsoft.XboxApp,
-Microsoft.ZuneMusic,
-Microsoft.ZuneVideo,
-Microsoft.BingFinance,
-Microsoft.BingNews,
-Microsoft.BingSports,
-Microsoft.BingWeather,
-Microsoft.WindowsMaps,
-Microsoft.YourPhone,
-Microsoft.GetHelp,
-Microsoft.Microsoft3Dviewer,
-Microsoft.Messaging,
-Microsoft.MixedReality.Portal,
-Microsoft.WindowsFeedbackHub,
-Microsoft.Wallet,
-Microsoft.Print3D"
-$appxpackage=$appxpackage.Split(",")
-foreach ($appx in $appxpackage) {Get-AppxPackage $appx | Remove-AppxPackage -AllUsers}
-}
-catch{
-$ErrorMessage = $_.Exception.message
-    write-host "Error removing builtin apps: $ErrorMessage"
-}
-write-host  "AIB: removal of applications"
-#endregion of inbuilt applications.
+# try{
+# $appxpackage =
+# "Microsoft.3DBuilder,
+# Microsoft.Getstarted,
+# Microsoft.MicrosoftOfficeHub,
+# Microsoft.MicrosoftSolitaireCollection,
+# Microsoft.WindowsCommunicationsApps,
+# Microsoft.XboxApp,
+# Microsoft.ZuneMusic,
+# Microsoft.ZuneVideo,
+# Microsoft.BingFinance,
+# Microsoft.BingNews,
+# Microsoft.BingSports,
+# Microsoft.BingWeather,
+# Microsoft.WindowsMaps,
+# Microsoft.YourPhone,
+# Microsoft.GetHelp,
+# Microsoft.Microsoft3Dviewer,
+# Microsoft.Messaging,
+# Microsoft.MixedReality.Portal,
+# Microsoft.WindowsFeedbackHub,
+# Microsoft.Wallet,
+# Microsoft.Print3D"
+# $appxpackage=$appxpackage.Split(",")
+# foreach ($appx in $appxpackage) {Get-AppxPackage $appx | Remove-AppxPackage -AllUsers}
+# }
+# catch{
+# $ErrorMessage = $_.Exception.message
+#     write-host "Error removing builtin apps: $ErrorMessage"
+# }
+# write-host  "AIB: removal of applications"
+# #endregion of inbuilt applications.
 
