@@ -8,7 +8,7 @@ function Write-Log {
 
 Write-host 'AIB Customization: IBM personal communication1'
 try {
-    Invoke-Expression -Command  "cmd.exe /C cscript.exe 'C:\apps\AVD_SD_Apps\IBM\a2\install.vbs'"
+    Invoke-Expression -Command  "cmd.exe /C cscript.exe 'C:\apps\AVD_SD_Apps1\IBM\a2\install.vbs'"
     write-host "IBM personal installed successfully"
     }
 catch {
@@ -20,7 +20,7 @@ Write-Host 'AIB customization: IBM personal communications end region'
 
 Write-host 'AIB Customization: IBM personal communication2'
 try {
-    Invoke-Expression -Command  "cmd.exe /C cscript.exe 'C:\apps\AVD_SD_Apps\IBM\a3\install.vbs'"
+    Invoke-Expression -Command  "cmd.exe /C cscript.exe 'C:\apps\AVD_SD_Apps1\IBM\a3\install.vbs'"
     write-host "IBM personal installed successfully"
     }
 catch {
@@ -32,7 +32,7 @@ Write-Host 'AIB customization: IBM personal communications end region'
 
 Write-host 'AIB Customization: Install CM4D'
 try {
-    Start-Process -filepath "C:\apps\AVD_SD_Apps\CM4D\DistributionFiles\Windows\ATS CM4D 25.0.21182 M2\Deploy-Application.exe" -Wait -ErrorAction Stop 
+    Start-Process -filepath "C:\apps\AVD_SD_Apps1\CM4D\DistributionFiles\Windows\ATS CM4D 25.0.21182 M2\Deploy-Application.exe" -Wait -ErrorAction Stop 
     write-log "CM4D installed successfully"
     write-host "CM4D installed successfully"
     }
@@ -47,7 +47,7 @@ Write-host 'AIB Customization: EndRegion CM4D'
 #install CPP client
 Write-host 'AIB Customization: Install CPP client'
 try {
-    Start-Process -filepath "C:\apps\AVD_SD_Apps\CPP client\DistributionFiles\Windows\VCC CPP Client 4.0.0.1 M2\Deploy-Application.exe" -Wait -ErrorAction Stop 
+    Start-Process -filepath "C:\apps\AVD_SD_Apps1\CPP client\DistributionFiles\Windows\VCC CPP Client 4.0.0.1 M2\Deploy-Application.exe" -Wait -ErrorAction Stop 
     write-log "CPP client installed successfully"
     write-host "CPP client installed successfully"
     }
@@ -63,7 +63,7 @@ Write-host 'AIB Customization: EndRegion CPP client'
 #install Chrome
 Write-host 'AIB Customization: Install Chrome'
 try {
-    Start-Process -filepath "C:\apps\AVD_SD_Apps\Google Chrome 90.0.4430.212\Deploy-Application.exe" -Wait -ErrorAction Stop 
+    Start-Process -filepath "C:\apps\AVD_SD_Apps1\Google Chrome 90.0.4430.212\Deploy-Application.exe" -Wait -ErrorAction Stop 
     write-log "Chrome installed successfully"
     write-host "Chrome installed successfully"
     }
@@ -79,7 +79,7 @@ Write-host 'AIB Customization: EndRegion Chrome'
 #install Printmgr
 Write-host 'AIB Customization: Install Printmgr'
 try {
-    Start-Process -filepath "C:\apps\AVD_SD_Apps\Print Manager\DistributionFiles\Windows\LRS Personal Print Manager With Pullprint 103.0.21.803\Deploy-Application.exe" -Wait -ErrorAction Stop 
+    Start-Process -filepath "C:\apps\AVD_SD_Apps1\Print Manager\DistributionFiles\Windows\LRS Personal Print Manager With Pullprint 103.0.21.803\Deploy-Application.exe" -Wait -ErrorAction Stop 
     write-log "Printmgr installed successfully"
     write-host "Printmgr installed successfully"
     }
@@ -94,7 +94,7 @@ Write-host 'AIB Customization: EndRegion Printmgr'
 #install bomgarrep
 Write-host 'AIB Customization: Install Bomgarrep'
 try {
-    Start-Process -filepath "C:\apps\AVD_SD_Apps\bomgarrep.exe" -ArgumentList "/S" -PassThru -Wait -ErrorAction Stop 
+    Start-Process -filepath "C:\apps\AVD_SD_Apps1\bomgarrep.exe" -ArgumentList "/S" -PassThru -Wait -ErrorAction Stop 
     write-log "bomgarrep installed successfully"
     write-host "bomgarrep installed successfully"
     }
