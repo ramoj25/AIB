@@ -94,7 +94,7 @@ Write-host 'AIB Customization: EndRegion Printmgr'
 #install bomgarrep
 Write-host 'AIB Customization: Install Bomgarrep'
 try {
-    Start-Process -filepath "C:\apps\AVD_SD_Apps\bomgarrep.exe" -Wait -ErrorAction Stop 
+    Start-Process -filepath "C:\apps\AVD_SD_Apps\bomgarrep.exe" -ArgumentList "/S" -PassThru -Wait -ErrorAction Stop 
     write-log "bomgarrep installed successfully"
     write-host "bomgarrep installed successfully"
     }
