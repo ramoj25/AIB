@@ -308,69 +308,69 @@ catch {
 Write-host 'AIB Customization: EndRegion SAP'
 #endregion SAP
 
-#install NETFramework
-Write-host 'AIB Customization: Install NETFramework'
-try {
-    Start-Process -filepath "C:\apps\AVD_SD_Apps\App-1881\NETFramework\Deploy-Application.exe" -Wait -ErrorAction Stop 
-    write-log "NETFramework installed successfully"
-    write-host "NETFramework installed successfully"
-    }
-catch {
-    $ErrorMessage = $_.Exception.message
-    write-log "Error installing NETFramework: $ErrorMessage"
-    write-host "Error installing NETFramework: $ErrorMessage"
-}
+# #install NETFramework
+# Write-host 'AIB Customization: Install NETFramework'
+# try {
+#     Start-Process -filepath "C:\apps\AVD_SD_Apps\App-1881\NETFramework\Deploy-Application.exe" -Wait -ErrorAction Stop 
+#     write-log "NETFramework installed successfully"
+#     write-host "NETFramework installed successfully"
+#     }
+# catch {
+#     $ErrorMessage = $_.Exception.message
+#     write-log "Error installing NETFramework: $ErrorMessage"
+#     write-host "Error installing NETFramework: $ErrorMessage"
+# }
 
-Write-host 'AIB Customization: EndRegion NETFramework'
-#endregion NETFramework
-#install C++
-Write-host 'AIB Customization: Install C++'
-try {
-    Start-Process -filepath "C:\apps\AVD_SD_Apps\App-1881\C++ 2019 Redistributable\Deploy-Application.exe" -Wait -ErrorAction Stop 
-    write-log "C++ installed successfully"
-    write-host "C++ installed successfully"
-    }
-catch {
-    $ErrorMessage = $_.Exception.message
-    write-log "Error installing C++: $ErrorMessage"
-    write-host "Error installing C++: $ErrorMessage"
-}
+# Write-host 'AIB Customization: EndRegion NETFramework'
+# #endregion NETFramework
+# #install C++
+# Write-host 'AIB Customization: Install C++'
+# try {
+#     Start-Process -filepath "C:\apps\AVD_SD_Apps\App-1881\C++ 2019 Redistributable\Deploy-Application.exe" -Wait -ErrorAction Stop 
+#     write-log "C++ installed successfully"
+#     write-host "C++ installed successfully"
+#     }
+# catch {
+#     $ErrorMessage = $_.Exception.message
+#     write-log "Error installing C++: $ErrorMessage"
+#     write-host "Error installing C++: $ErrorMessage"
+# }
 
-Write-host 'AIB Customization: EndRegion C++'
-#endregion C++
-#install Phython
-Write-host 'AIB Customization: Install Phython'
-try {
-    Start-Process -filepath "C:\apps\AVD_SD_Apps\App-1881\Phython\Deploy-Application.exe" -Wait -ErrorAction Stop 
-    write-log "NETFramework installed successfully"
-    write-host "NETFramework installed successfully"
-    }
-catch {
-    $ErrorMessage = $_.Exception.message
-    write-log "Error installing Phython: $ErrorMessage"
-    write-host "Error installing Phython: $ErrorMessage"
-}
+# Write-host 'AIB Customization: EndRegion C++'
+# #endregion C++
+# #install Phython
+# Write-host 'AIB Customization: Install Phython'
+# try {
+#     Start-Process -filepath "C:\apps\AVD_SD_Apps\App-1881\Phython\Deploy-Application.exe" -Wait -ErrorAction Stop 
+#     write-log "NETFramework installed successfully"
+#     write-host "NETFramework installed successfully"
+#     }
+# catch {
+#     $ErrorMessage = $_.Exception.message
+#     write-log "Error installing Phython: $ErrorMessage"
+#     write-host "Error installing Phython: $ErrorMessage"
+# }
 
-Write-host 'AIB Customization: EndRegion Phython'
-#endregion Phython
+# Write-host 'AIB Customization: EndRegion Phython'
+# #endregion Phython
 
 
 
-#install App-1881
-Write-host 'AIB Customization: Install app-1881'
-try {
-    Start-Process -filepath "C:\apps\AVD_SD_Apps\App-1881\Elektra\Deploy-Application.exe" -Wait -ErrorAction Stop 
-    write-log "app-1881 installed successfully"
-    write-host "app-1881 installed successfully"
-    }
-catch {
-    $ErrorMessage = $_.Exception.message
-    write-log "Error installing app-1881: $ErrorMessage"
-    write-host "Error installing app-1881: $ErrorMessage"
-}
+# #install App-1881
+# Write-host 'AIB Customization: Install app-1881'
+# try {
+#     Start-Process -filepath "C:\apps\AVD_SD_Apps\App-1881\Elektra\Deploy-Application.exe" -Wait -ErrorAction Stop 
+#     write-log "app-1881 installed successfully"
+#     write-host "app-1881 installed successfully"
+#     }
+# catch {
+#     $ErrorMessage = $_.Exception.message
+#     write-log "Error installing app-1881: $ErrorMessage"
+#     write-host "Error installing app-1881: $ErrorMessage"
+# }
 
-Write-host 'AIB Customization: EndRegion app-1881'
-#endregion App-1881
+# Write-host 'AIB Customization: EndRegion app-1881'
+# #endregion App-1881
 
 
 #install CM4D
