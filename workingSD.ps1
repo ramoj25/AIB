@@ -115,6 +115,30 @@ Write-Host 'AIB customization: IBM personal communications end region'
 #endregion
 
 
+Write-host 'AIB Customization: IBM personal communication1'
+try {
+    Invoke-Expression -Command  "cmd.exe /C cscript.exe 'C:\apps\AVD_SD_Apps\IBM\a2\install.vbs'"
+    write-host "IBM personal installed successfully"
+    }
+catch {
+    $ErrorMessage = $_.Exception.message
+    Write-host "Error installing IBM personal communication: $ErrorMessage"
+}
+Write-Host 'AIB customization: IBM personal communications end region'
+#endregion
+
+Write-host 'AIB Customization: IBM personal communication2'
+try {
+    Invoke-Expression -Command  "cmd.exe /C cscript.exe 'C:\apps\AVD_SD_Apps\IBM\a3\install.vbs'"
+    write-host "IBM personal installed successfully"
+    }
+catch {
+    $ErrorMessage = $_.Exception.message
+    Write-host "Error installing IBM personal communication: $ErrorMessage"
+}
+Write-Host 'AIB customization: IBM personal communications end region'
+#endregion
+
 
 #install Umbrella
 Write-host 'AIB Customization: Install Umbrella'
@@ -298,27 +322,6 @@ catch {
 }
 #endregion
 Write-host 'AIB Customization: endregion Wallpaper'
+write-host 'AIB Customization: started sleeping for 120 seconds'
+Start-sleep -seconds 200
 
-Write-host 'AIB Customization: IBM personal communication1'
-try {
-    Invoke-Expression -Command  "cmd.exe /C cscript.exe 'C:\apps\AVD_SD_Apps\IBM\a2\install.vbs'"
-    write-host "IBM personal installed successfully"
-    }
-catch {
-    $ErrorMessage = $_.Exception.message
-    Write-host "Error installing IBM personal communication: $ErrorMessage"
-}
-Write-Host 'AIB customization: IBM personal communications end region'
-#endregion
-
-Write-host 'AIB Customization: IBM personal communication2'
-try {
-    Invoke-Expression -Command  "cmd.exe /C cscript.exe 'C:\apps\AVD_SD_Apps\IBM\a3\install.vbs'"
-    write-host "IBM personal installed successfully"
-    }
-catch {
-    $ErrorMessage = $_.Exception.message
-    Write-host "Error installing IBM personal communication: $ErrorMessage"
-}
-Write-Host 'AIB customization: IBM personal communications end region'
-#endregion
