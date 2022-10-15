@@ -7,6 +7,22 @@ function Write-Log {
 }
 #endregion
 
+#install Java
+Write-host 'AIB Customization: Install Java'
+try {
+    
+    Start-Process -filepath msiexec.exe -Wait -ErrorAction Stop -ArgumentList '/i', "C:\apps\AVD_SD_Apps\Java_8\source\jre1.8.0_72.msi", TRANSFORMS="C:\apps\AVD_SD_Apps\Java_8\source\Java_8_Update_72_x86_8.0.720.15_W10.mst" , '/qn','/l*v',  "C:\Windows\Temp\Java-INSTALL.log"
+    Write-Log "successfully installed Java"
+    Write-host "successfully installed Java"
+
+    }
+catch {
+    $ErrorMessage = $_.Exception.message
+    write-log "Error installed Java: $ErrorMessage"
+    Write-Log "Error installed Java: $ErrorMessage"
+}
+
+#endregion Java
 
 #install JRE
 Write-host 'AIB Customization: Install JRE'
@@ -22,6 +38,53 @@ catch {
 }
 #endregion
 Write-host 'AIB Customization: EndRegion JRE'
+#install NETFramework
+Write-host 'AIB Customization: Install NETFramework'
+try {
+    Start-Process -filepath "C:\apps\AVD_SD_Apps\App-1881\NETFramework\Deploy-Application.exe" -ArgumentList "/S" -PassThru -Wait -ErrorAction Stop
+    write-log "NETFramework installed successfully"
+    write-host "NETFramework installed successfully"
+    }
+catch {
+    $ErrorMessage = $_.Exception.message
+    write-log "Error installing NETFramework: $ErrorMessage"
+    write-host "Error installing NETFramework: $ErrorMessage"
+}
+
+Write-host 'AIB Customization: EndRegion NETFramework'
+#endregion NETFramework
+#install C++
+Write-host 'AIB Customization: Install C++'
+try {
+    Start-Process -filepath "C:\apps\AVD_SD_Apps\App-1881\C++ 2019 Redistributable\Deploy-Application.exe" -ArgumentList "/S" -PassThru -Wait -ErrorAction Stop 
+    write-log "C++ installed successfully"
+    write-host "C++ installed successfully"
+    }
+catch {
+    $ErrorMessage = $_.Exception.message
+    write-log "Error installing C++: $ErrorMessage"
+    write-host "Error installing C++: $ErrorMessage"
+}
+
+Write-host 'AIB Customization: EndRegion C++'
+#endregion C++
+#install Phython
+Write-host 'AIB Customization: Install Phython'
+try {
+    Start-Process -filepath "C:\apps\AVD_SD_Apps\App-1881\Phython\Deploy-Application.exe" -ArgumentList "/S" -PassThru -Wait -ErrorAction Stop 
+    write-log "NETFramework installed successfully"
+    write-host "NETFramework installed successfully"
+    }
+catch {
+    $ErrorMessage = $_.Exception.message
+    write-log "Error installing Phython: $ErrorMessage"
+    write-host "Error installing Phython: $ErrorMessage"
+}
+
+Write-host 'AIB Customization: EndRegion Phython'
+#endregion Phython
+
+
 
 
 #install AIP
@@ -70,22 +133,6 @@ catch {
 Write-host 'AIB Customization: endregion TNS_Names'
 #endregion
 
-#install Bomgar
-Write-host 'AIB Customization: Install Bomgar'
-try {
-    Start-Process -filepath msiexec.exe -Wait -ErrorAction Stop -ArgumentList '/i', "C:\apps\AVD_SD_Apps\Bomgar\o\bomgar-scc-win64.msi", "KEY_INFO=w0gdc30y87ej6857zy761jj5x8h8j858e1wi7zec408c90", '/qn','/l*v',  "C:\Windows\Temp\Bomgar-INSTALL.log"
-    write-log "TNS_names installed successfully"
-    write-host "TNS_names installed successfully"
-    }
-catch {
-    $ErrorMessage = $_.Exception.message
-    write-log "Error installing TNS_names: $ErrorMessage"
-    write-host "Error installing TNS_names: $ErrorMessage"
-}
-#endregion
-Write-host 'AIB Customization: endregion Bomgar'
-
-
 Write-host 'AIB Customization: Install Lotusnotes'
 try {
     Start-Process -filepath "C:\apps\AVD_SD_Apps\LotusNotes\DistributionFiles\Windows\HCL Lotus Notes 11.0.1\Deploy-Application.exe" -Wait -ErrorAction Stop 
@@ -99,20 +146,6 @@ catch {
 }
 #endregion
 Write-host 'AIB Customization: EndRegion Lotusnotes'
-
-
-# Write-host 'AIB Customization: IBM personal communication'
-# try {
-#     Start-Process -filepath msiexec.exe -Wait -ErrorAction Stop -ArgumentList "/i","`"C:\apps\AVD_SD_Apps\IBM Personal Communications 13.0.0\source\IBM Personal Communications.msi`"","TRANSFORMS=`"C:\apps\AVD_SD_Apps\IBM Personal Communications 13.0.0\source\IBM_Personnal_Communications_13.0.0.mst`"","/qn","/l*v","c:\windows\temp\ibm5.log"
-#     write-host "IBM personal installed successfully"
-#     }
-# catch {
-#     $ErrorMessage = $_.Exception.message
-#     Write-host "Error installing IBM personal communication: $ErrorMessage"
-# }
-# Write-Host 'AIB customization: IBM personal communications end region'
-# #endregion
-
 
 
 Write-host 'AIB Customization: IBM personal communication1'
@@ -138,11 +171,6 @@ catch {
 }
 Write-Host 'AIB customization: IBM personal communications end region'
 #endregion
-
-
-
-
-
 
 #install Umbrella
 Write-host 'AIB Customization: Install Umbrella'
@@ -217,23 +245,7 @@ catch {
 }
 #end region.
 Write-host 'AIB Customization: endregion Laps'
-#install Java
-Write-host 'AIB Customization: Install Java'
-try {
-    
-    Start-Process -filepath msiexec.exe -Wait -ErrorAction Stop -ArgumentList '/i', "C:\apps\AVD_SD_Apps\Java_8\source\jre1.8.0_72.msi", TRANSFORMS="C:\apps\AVD_SD_Apps\Java_8\source\Java_8_Update_72_x86_8.0.720.15_W10.mst" , '/qn','/l*v',  "C:\Windows\Temp\Java-INSTALL.log"
-    Write-Log "successfully installed Java"
-    Write-host "successfully installed Java"
 
-    }
-catch {
-    $ErrorMessage = $_.Exception.message
-    write-log "Error installed Java: $ErrorMessage"
-    Write-Log "Error installed Java: $ErrorMessage"
-}
-
-#endregion Java
-Write-host 'AIB Customization: endregion Laps'
 #Onboard Windows Defender ATP.
 Write-host 'AIB Customization: Configure Defender ATP'
 try{
@@ -274,23 +286,6 @@ catch {
 #endregion of teams.
 Write-host 'AIB Customization: endregion optimized teams'
 
-#install Terminal 
-Write-host 'AIB Customization: Install Terminal2.0'
-try {
-    Start-Process -filepath msiexec.exe -Wait -ErrorAction Stop -ArgumentList '/i', "`"C:\apps\AVD_SD_Apps\Terminal 2.0\DistributionFiles\Windows\Terminal 2.0\2.0\source\Terminal_2.0.msi`"", '/qn','/l*v',  "C:\Windows\Temp\Terminal_2.0_EN_x86_M1-INSTALL.log"
-    write-log "Terminal installed successfully"
-    write-host "Terminal installed successfully"
-    }
-catch {
-    $ErrorMessage = $_.Exception.message
-    write-log "Error installing Terminal: $ErrorMessage"
-    write-host "Error installing Terminal: $ErrorMessage"
-}
-
-Write-host 'AIB Customization: EndRegion Terminal'
-#endregion SAP
-
-
 
 #install SAP 
 Write-host 'AIB Customization: Install SAP'
@@ -307,53 +302,6 @@ catch {
 
 Write-host 'AIB Customization: EndRegion SAP'
 #endregion SAP
-
-#install NETFramework
-Write-host 'AIB Customization: Install NETFramework'
-try {
-    Start-Process -filepath "C:\apps\AVD_SD_Apps\App-1881\NETFramework\Deploy-Application.exe" -ArgumentList "/S" -PassThru -Wait -ErrorAction Stop
-    write-log "NETFramework installed successfully"
-    write-host "NETFramework installed successfully"
-    }
-catch {
-    $ErrorMessage = $_.Exception.message
-    write-log "Error installing NETFramework: $ErrorMessage"
-    write-host "Error installing NETFramework: $ErrorMessage"
-}
-
-Write-host 'AIB Customization: EndRegion NETFramework'
-#endregion NETFramework
-#install C++
-Write-host 'AIB Customization: Install C++'
-try {
-    Start-Process -filepath "C:\apps\AVD_SD_Apps\App-1881\C++ 2019 Redistributable\Deploy-Application.exe" -ArgumentList "/S" -PassThru -Wait -ErrorAction Stop 
-    write-log "C++ installed successfully"
-    write-host "C++ installed successfully"
-    }
-catch {
-    $ErrorMessage = $_.Exception.message
-    write-log "Error installing C++: $ErrorMessage"
-    write-host "Error installing C++: $ErrorMessage"
-}
-
-Write-host 'AIB Customization: EndRegion C++'
-#endregion C++
-#install Phython
-Write-host 'AIB Customization: Install Phython'
-try {
-    Start-Process -filepath "C:\apps\AVD_SD_Apps\App-1881\Phython\Deploy-Application.exe" -ArgumentList "/S" -PassThru -Wait -ErrorAction Stop 
-    write-log "NETFramework installed successfully"
-    write-host "NETFramework installed successfully"
-    }
-catch {
-    $ErrorMessage = $_.Exception.message
-    write-log "Error installing Phython: $ErrorMessage"
-    write-host "Error installing Phython: $ErrorMessage"
-}
-
-Write-host 'AIB Customization: EndRegion Phython'
-#endregion Phython
-
 
 
 #install App-1881
@@ -471,37 +419,4 @@ catch {
 }
 #endregion
 Write-host 'AIB Customization: endregion Wallpaper'
-#removal of inbuilt applications.
-# try{
-# $appxpackage =
-# "Microsoft.3DBuilder,
-# Microsoft.Getstarted,
-# Microsoft.MicrosoftOfficeHub,
-# Microsoft.MicrosoftSolitaireCollection,
-# Microsoft.WindowsCommunicationsApps,
-# Microsoft.XboxApp,
-# Microsoft.ZuneMusic,
-# Microsoft.ZuneVideo,
-# Microsoft.BingFinance,
-# Microsoft.BingNews,
-# Microsoft.BingSports,
-# Microsoft.BingWeather,
-# Microsoft.WindowsMaps,
-# Microsoft.YourPhone,
-# Microsoft.GetHelp,
-# Microsoft.Microsoft3Dviewer,
-# Microsoft.Messaging,
-# Microsoft.MixedReality.Portal,
-# Microsoft.WindowsFeedbackHub,
-# Microsoft.Wallet,
-# Microsoft.Print3D"
-# $appxpackage=$appxpackage.Split(",")
-# foreach ($appx in $appxpackage) {Get-AppxPackage $appx | Remove-AppxPackage -AllUsers}
-# }
-# catch{
-# $ErrorMessage = $_.Exception.message
-#     write-host "Error removing builtin apps: $ErrorMessage"
-# }
-# write-host  "AIB: removal of applications"
-# #endregion of inbuilt applications.
 
