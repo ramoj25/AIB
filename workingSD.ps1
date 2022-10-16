@@ -270,20 +270,6 @@ catch {
 #endregion of teams.
 Write-host 'AIB Customization: endregion optimized teams'
 
-#install Terminal 
-Write-host 'AIB Customization: Install Terminal2.0'
-try {
-    Start-Process -filepath msiexec.exe -Wait -ErrorAction Stop -ArgumentList '/i', "`"C:\apps\AVD_SD_Apps\Terminal 2.0\DistributionFiles\Windows\Terminal 2.0\2.0\source\Terminal_2.0.msi`"", '/qn','/l*v',  "C:\Windows\Temp\Terminal_2.0_EN_x86_M1-INSTALL.log"
-    write-log "Terminal installed successfully"
-    write-host "Terminal installed successfully"
-    }
-catch {
-    $ErrorMessage = $_.Exception.message
-    write-log "Error installing Terminal: $ErrorMessage"
-    write-host "Error installing Terminal: $ErrorMessage"
-}
-
-Write-host 'AIB Customization: EndRegion Terminal'
 #endregion SAP
 
 
