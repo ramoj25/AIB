@@ -322,6 +322,5 @@ catch {
 }
 #endregion
 Write-host 'AIB Customization: endregion Wallpaper'
-write-host 'AIB Customization: started sleeping for 120 seconds'
-Start-sleep -seconds 200
+
 
