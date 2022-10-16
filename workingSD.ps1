@@ -101,45 +101,6 @@ catch {
 #endregion
 Write-host 'AIB Customization: EndRegion Lotusnotes'
 
-
-Write-host 'AIB Customization: IBM personal communication'
-try {
-    Start-Process -filepath msiexec.exe -Wait -ErrorAction Stop -ArgumentList "/i","`"C:\apps\AVD_SD_Apps\IBM Personal Communications 13.0.0\source\IBM Personal Communications.msi`"","TRANSFORMS=`"C:\apps\AVD_SD_Apps\IBM Personal Communications 13.0.0\source\IBM_Personnal_Communications_13.0.0.mst`"","/qn","/l*v","c:\windows\temp\ibm5.log"
-    write-host "IBM personal installed successfully"
-    }
-catch {
-    $ErrorMessage = $_.Exception.message
-    Write-host "Error installing IBM personal communication: $ErrorMessage"
-}
-Write-Host 'AIB customization: IBM personal communications end region'
-#endregion
-
-
-Write-host 'AIB Customization: IBM personal communication1'
-try {
-    Invoke-Expression -Command  "cmd.exe /C cscript.exe 'C:\apps\AVD_SD_Apps\IBM\a2\install.vbs'"
-    write-host "IBM personal installed successfully"
-    }
-catch {
-    $ErrorMessage = $_.Exception.message
-    Write-host "Error installing IBM personal communication: $ErrorMessage"
-}
-Write-Host 'AIB customization: IBM personal communications end region'
-#endregion
-
-Write-host 'AIB Customization: IBM personal communication2'
-try {
-    Invoke-Expression -Command  "cmd.exe /C cscript.exe 'C:\apps\AVD_SD_Apps\IBM\a3\install.vbs'"
-    write-host "IBM personal installed successfully"
-    }
-catch {
-    $ErrorMessage = $_.Exception.message
-    Write-host "Error installing IBM personal communication: $ErrorMessage"
-}
-Write-Host 'AIB customization: IBM personal communications end region'
-#endregion
-
-
 #install Umbrella
 Write-host 'AIB Customization: Install Umbrella'
 try {
