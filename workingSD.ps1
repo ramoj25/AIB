@@ -373,3 +373,19 @@ Write-host 'AIB Customization: EndRegion IBM'
 #endregion IBM a3
 
 
+
+
+#install Terminal2
+Write-host 'AIB Customization: Install Terminal2'
+try {
+   Start-Process -filepath msiexec.exe -Wait -ErrorAction Stop -ArgumentList "/i","`"C:\apps\AVD_SD_Apps\Terminal 2.0\DistributionFiles\Windows\Terminal 2.0\2.0\source\Terminal_2.0.MSI`"","/qn","/l*v","c:\windows\temp\terminal.log"
+    }
+catch {
+    $ErrorMessage = $_.Exception.message
+    
+    write-host "Error Terminal2.0: $ErrorMessage"
+}
+
+Write-host 'AIB Customization: EndRegion IBM'
+#endregion Terminal 
+# msiexec /i "terminal20.MSI" /qn /l*v "C:\Windows\Temp\Terminal_2.0_EN_x86_M1-INSTALL.log"
