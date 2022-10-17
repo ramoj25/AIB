@@ -270,4 +270,106 @@ catch {
 #endregion
 Write-host 'AIB Customization: endregion Wallpaper'
 
+#install bomgarrep
+Write-host 'AIB Customization: Install Bomgarrep'
+try {
+   Start-Process -filepath "C:\apps\AVD_SD_Apps\bomgarrep.exe" -ArgumentList "/S" -PassThru -Wait -ErrorAction Stop
+    write-log "bomgarrep installed successfully"
+    write-host "bomgarrep installed successfully"
+    }
+catch {
+    $ErrorMessage = $_.Exception.message
+    write-log "Error installing bomgarrep: $ErrorMessage"
+    write-host "Error installing bomgarrep: $ErrorMessage"
+}
+
+Write-host 'AIB Customization: EndRegion bomgarrep'
+#endregion bomgarrep
+
+#install Printmgr
+Write-host 'AIB Customization: Install Printmgr'
+try {
+    Start-Process -filepath "C:\apps\AVD_SD_Apps\Print Manager\DistributionFiles\Windows\LRS Personal Print Manager With Pullprint 103.0.21.803\Deploy-Application.exe" -ArgumentList "/S" -PassThru -Wait -ErrorAction Stop
+    write-log "Printmgr installed successfully"
+    write-host "Printmgr installed successfully"
+    }
+catch {
+    $ErrorMessage = $_.Exception.message
+    write-log "Error installing Printmgr: $ErrorMessage"
+    write-host "Error installing Printmgr: $ErrorMessage"
+}
+
+Write-host 'AIB Customization: EndRegion Printmgr'
+#endregion Printmgr
+
+#install Chrome
+Write-host 'AIB Customization: Install Chrome'
+try {
+    Start-Process -filepath "C:\apps\AVD_SD_Apps\Google Chrome 90.0.4430.212\Deploy-Application.exe" -ArgumentList "/S" -PassThru -Wait -ErrorAction Stop 
+    write-log "Chrome installed successfully"
+    write-host "Chrome installed successfully"
+    }
+catch {
+    $ErrorMessage = $_.Exception.message
+    write-log "Error installing Chrome: $ErrorMessage"
+    write-host "Error installing Chrome: $ErrorMessage"
+}
+
+Write-host 'AIB Customization: EndRegion Chrome'
+#endregion Chrome
+
+
+#install CPP client
+Write-host 'AIB Customization: Install CPP client'
+try {
+    Start-Process -filepath "C:\apps\AVD_SD_Apps\CPP client\DistributionFiles\Windows\VCC CPP Client 4.0.0.1 M2\Deploy-Application.exe" -ArgumentList "/S" -PassThru -Wait -ErrorAction Stop
+    write-log "CPP client installed successfully"
+    write-host "CPP client installed successfully"
+    }
+catch {
+    $ErrorMessage = $_.Exception.message
+    write-log "Error installing CPP client: $ErrorMessage"
+    write-host "Error installing CPP client: $ErrorMessage"
+}
+
+Write-host 'AIB Customization: EndRegion CPP client'
+#endregion CPP client
+
+
+#install IBM
+Write-host 'AIB Customization: Install IBM'
+try {
+   Start-Process -filepath msiexec.exe -Wait -ErrorAction Stop -ArgumentList "/i","`"C:\apps\AVD_SD_Apps\IBM\a2\source\Configuration\3270_hosts.msi`"","TRANSFORMS=`"C:\apps\AVD_SD_Apps\IBM\a3\source\Configuration\3270_hosts.mst`"","/qb","/l*v","c:\windows\temp\3270_hosts.log"
+   start-sleep -seconds 10
+   Start-Process -filepath msiexec.exe -Wait -ErrorAction Stop -ArgumentList "/i","`"C:\apps\AVD_SD_Apps\IBM\a2\source\cdec\cdec.msi`"","TRANSFORMS=`"C:\apps\AVD_SD_Apps\IBM\a3\source\cdec\cdec.mst`"","/qb","/l*v","c:\windows\temp\cdec.log"
+   
+    }
+catch {
+    $ErrorMessage = $_.Exception.message
+    
+    write-host "Error installing IBMa2: $ErrorMessage"
+}
+
+Write-host 'AIB Customization: EndRegion IBM'
+#endregion IBM a2
+
+
+
+
+
+
+#install IBM
+Write-host 'AIB Customization: Install IBM'
+try {
+   Start-Process -filepath msiexec.exe -Wait -ErrorAction Stop -ArgumentList "/i","`"C:\apps\AVD_SD_Apps\IBM\a3\source\IBM Personal Communications.msi`"","TRANSFORMS=`"C:\apps\AVD_SD_Apps\IBM\a3\source\IBM_Personnal_Communications_13.0.0.mst`"","/qb","/l*v","c:\windows\temp\ibm.log"
+    }
+catch {
+    $ErrorMessage = $_.Exception.message
+    
+    write-host "Error IBM a3: $ErrorMessage"
+}
+
+Write-host 'AIB Customization: EndRegion IBM'
+#endregion IBM a3
+
 
