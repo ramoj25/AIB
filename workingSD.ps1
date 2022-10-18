@@ -289,7 +289,7 @@ Write-host 'AIB Customization: EndRegion bomgarrep'
 #install Printmgr
 Write-host 'AIB Customization: Install Printmgr'
 try {
-    Start-Process -filepath "C:\apps\AVD_SD_Apps\Print Manager\DistributionFiles\Windows\LRS Personal Print Manager With Pullprint 103.0.21.803\Deploy-Application.exe" -ArgumentList "/S" -PassThru -Wait -ErrorAction Stop
+    Start-Process -filepath "C:\apps\AVD_SD_Apps\Print Manager\DistributionFiles\Windows\LRS Personal Print Manager With Pullprint 103.0.21.803\Deploy-Application.exe" -Wait -ErrorAction Stop
     write-log "Printmgr installed successfully"
     write-host "Printmgr installed successfully"
     }
@@ -305,7 +305,7 @@ Write-host 'AIB Customization: EndRegion Printmgr'
 #install Chrome
 Write-host 'AIB Customization: Install Chrome'
 try {
-    Start-Process -filepath "C:\apps\AVD_SD_Apps\Google Chrome 90.0.4430.212\Deploy-Application.exe" -ArgumentList "/S" -PassThru -Wait -ErrorAction Stop 
+    Start-Process -filepath "C:\apps\AVD_SD_Apps\Google Chrome 90.0.4430.212\Deploy-Application.exe" -Wait -ErrorAction Stop 
     write-log "Chrome installed successfully"
     write-host "Chrome installed successfully"
     }
@@ -322,7 +322,7 @@ Write-host 'AIB Customization: EndRegion Chrome'
 #install CPP client
 Write-host 'AIB Customization: Install CPP client'
 try {
-    Start-Process -filepath "C:\apps\AVD_SD_Apps\CPP client\DistributionFiles\Windows\VCC CPP Client 4.0.0.1 M2\Deploy-Application.exe" -ArgumentList "/S" -PassThru -Wait -ErrorAction Stop
+    Start-Process -filepath "C:\apps\AVD_SD_Apps\CPP client\DistributionFiles\Windows\VCC CPP Client 4.0.0.1 M2\Deploy-Application.exe"  -Wait -ErrorAction Stop
     write-log "CPP client installed successfully"
     write-host "CPP client installed successfully"
     }
@@ -340,7 +340,21 @@ Write-host 'AIB Customization: EndRegion CPP client'
 Write-host 'AIB Customization: Install IBM'
 try {
    Start-Process -filepath msiexec.exe -Wait -ErrorAction Stop -ArgumentList "/i","`"C:\apps\AVD_SD_Apps\IBM\a2\source\Configuration\3270_hosts.msi`"","TRANSFORMS=`"C:\apps\AVD_SD_Apps\IBM\a3\source\Configuration\3270_hosts.mst`"","/qn","/l*v","c:\windows\temp\3270_hosts.log"
-   start-sleep -seconds 10
+      
+    }
+catch {
+    $ErrorMessage = $_.Exception.message
+    
+    write-host "Error installing IBMa2: $ErrorMessage"
+}
+
+Write-host 'AIB Customization: EndRegion IBM'
+#endregion IBM a2
+
+#install IBM
+Write-host 'AIB Customization: Install IBM'
+try {
+   
    Start-Process -filepath msiexec.exe -Wait -ErrorAction Stop -ArgumentList "/i","`"C:\apps\AVD_SD_Apps\IBM\a2\source\cdec\cdec.msi`"","TRANSFORMS=`"C:\apps\AVD_SD_Apps\IBM\a3\source\cdec\cdec.mst`"","/qn","/l*v","c:\windows\temp\cdec.log"
    
     }
@@ -352,8 +366,6 @@ catch {
 
 Write-host 'AIB Customization: EndRegion IBM'
 #endregion IBM a2
-
-
 
 
 
@@ -388,4 +400,4 @@ catch {
 
 Write-host 'AIB Customization: EndRegion IBM'
 #endregion Terminal 
-# msiexec /i "terminal20.MSI" /qn /l*v "C:\Windows\Temp\Terminal_2.0_EN_x86_M1-INSTALL.log"
+
