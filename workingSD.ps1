@@ -254,7 +254,7 @@ Write-host 'AIB Customization: EndRegion SAP'
 #install VCC wallpaper
 Write-host 'AIB Customization: Configure Wallpaper'
 try {
-    Start-Process -filepath "C:\apps\AVD_SD_Apps\VCC_Wallpaper\Deploy-Application.exe" -Wait -ErrorAction Stop 
+    Start-Process -filepath "C:\apps\AVD_SD_Apps\VCC_Wallpaper\DistributionFiles\Windows\VCC Desktop Wallpaper 2210\Deploy-Application.exe" -Wait -ErrorAction Stop 
     Start-Sleep -Seconds 5
     write-log "VCC Wallpaper successfully"
     write-host "VCC Wallpaper successfully"
