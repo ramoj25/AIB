@@ -217,7 +217,39 @@ catch {
     write-log "Error setting wallpaper: $ErrorMessage"
 }
 #endregion
-Write-host 'AIB Customization: endregion Wallpaper'
+
+#install Chrome
+Write-host 'AIB Customization: Install Chrome'
+try {
+    Start-Process -filepath "C:\apps\AVDapps\Google Chrome 90.0.4430.212\Deploy-Application.exe" -Wait -ErrorAction Stop 
+    write-log "Chrome installed successfully"
+    write-host "Chrome installed successfully"
+    }
+catch {
+    $ErrorMessage = $_.Exception.message
+    write-log "Error installing Chrome: $ErrorMessage"
+    write-host "Error installing Chrome: $ErrorMessage"
+}
+Write-host 'AIB Customization: endregion chrome'
+
+#install AVDBG
+Write-host 'AIB Customization: Install AVDBG'
+try {
+  Start-Process -filepath "C:\apps\AVDapps\AVDBG\DistributionFiles\Windows\VCC Teams Video Backgrounds Global Brand Campaign 2210\Deploy-Application.exe" -Wait -ErrorAction Stop
+    }
+catch {
+    $ErrorMessage = $_.Exception.message
+    
+    write-host "Error AVDBG: $ErrorMessage"
+}
+
+Write-host 'AIB Customization: EndRegion AVDBG'
+#endregion AVDBG 
+
+
+
+
+
 #removal of inbuilt applications.
 try{
 $appxpackage =
