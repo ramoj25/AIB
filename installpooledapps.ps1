@@ -165,7 +165,7 @@ try{
 $dir='C:\WINDOWS\System32\GroupPolicy\Machine\Scripts\Startup'
 New-Item -Path $dir -ItemType Directory -force
 Copy-Item -path "c:\apps\AVDapps\Onboard ATP\Onboard-NonPersistentMachine.ps1" -Destination $dir
-write-log "Error copying Onboard-NonPersistentMachine : success" 
+write-log "Copying Onboard-NonPersistentMachine : success" 
 }
 catch{
     $ErrorMessage = $_.Exception.message
@@ -174,6 +174,7 @@ catch{
 }
 try {
     Copy-Item -path "c:\apps\AVDapps\Onboard ATP\WindowsDefenderATPOnboardingScript.cmd" -Destination $dir
+    write-log "Copying atponboardingscript.cmd"
 }
 catch {
     $ErrorMessage = $_.Exception.message
