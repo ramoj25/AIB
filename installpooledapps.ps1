@@ -10,7 +10,7 @@ function Write-Log {
 #install AIP
 Write-host 'AIB Customization: Install AIP'
 try {
-    Start-Process -filepath "C:\apps\AVDapps\AIP\Deploy-Application.exe" -Wait -ErrorAction Stop 
+    Start-Process -filepath "C:\apps\AVDapps\AIP\DistributionFiles\Windows\Microsoft AIP 2.13.49\Deploy-Application.exe" -Wait -ErrorAction Stop 
     write-log "AIP installed successfully"
     write-host "AIP installed successfully"
     }
@@ -187,7 +187,7 @@ Write-host 'AIB Customization: endregion defender ATP'
 Write-host 'AIB Customization: install optimized teams'
 
 try {
-    Start-Process -filepath "C:\apps\AVDapps\AVDTeams\Deploy-Application.exe" -Wait -ErrorAction Stop 
+    Start-Process -filepath "C:\apps\AVDapps\AVDTeams\DistributionFiles\Windows\Microsoft Teams for AVD 1.5\Deploy-Application.exe" -Wait -ErrorAction Stop 
     write-log "AVD Teams installed successfully."
     write-host "AVD Teams installed successfully."
     }
@@ -202,9 +202,8 @@ Write-host 'AIB Customization: endregion optimized teams'
 #install VCC wallpaper
 Write-host 'AIB Customization: Configure Wallpaper'
 try {
-    Start-Process -filepath "C:\apps\AVDapps\VCC_Wallpaper\Deploy-Application.exe" -Wait -ErrorAction Stop 
+    Start-Process -filepath "C:\apps\AVDapps\DistributionFiles\Windows\VCC Desktop Wallpaper 2210\Deploy-Application.exe" -Wait -ErrorAction Stop 
     Start-Sleep -Seconds 5
-    #Start-Process powershell.exe "C:\apps\AVDapps\VCC_Wallpaper\vccWALLPAPER.ps1"
     write-log "VCC Wallpaper successfully"
     write-host "VCC Wallpaper successfully"
     New-Item -path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization" -Force
