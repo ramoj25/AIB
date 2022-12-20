@@ -246,7 +246,33 @@ catch {
 Write-host 'AIB Customization: EndRegion AVDBG'
 #endregion AVDBG 
 
+#install Notepadd
+Write-host 'AIB Customization: Install Notepadd'
+try {
+  Start-Process -filepath "C:\apps\AVDapps\Notepad++\DistributionFiles\Windows\Open Software Notepad++ 8.4\Deploy-Application.exe" -Wait -ErrorAction Stop
+    }
+catch {
+    $ErrorMessage = $_.Exception.message
+    
+    write-host "Error Notepadd: $ErrorMessage"
+}
 
+Write-host 'AIB Customization: EndRegion Notepadd'
+#endregion Notepadd 
+
+#install Putty
+Write-host 'AIB Customization: Install Putty'
+try {
+ Start-Process -filepath msiexec.exe -Wait -ErrorAction Stop -ArgumentList '/i', "C:\apps\AVDapps\Putty\OriginalFiles\putty-64bit-0.74-installer.msi", '/qn','/l*v',  "C:\Windows\Temp\Putty-INSTALL.log"
+    }
+catch {
+    $ErrorMessage = $_.Exception.message
+    
+    write-host "Error Putty: $ErrorMessage"
+}
+
+Write-host 'AIB Customization: EndRegion Putty'
+#endregion Putty 
 
 
 
