@@ -158,22 +158,8 @@ catch {
 }
 #end region.
 
-#Laps
-Write-host 'AIB Customization: Install Laps'
-try {
-    
-    Start-Process -filepath msiexec.exe -Wait -ErrorAction Stop -ArgumentList '/i', "C:\apps\AVD_SD_Apps\LAPS\Laps.x64.msi", TRANSFORMS="C:\apps\AVD_SD_Apps\LAPS\LAPS_6.2.0.0.mst" , '/qn','/l*v',  "C:\Windows\Temp\Local_Admin_Password_Solution_6.2.0.0_EN_x64_M1-INSTALL.log"
-    Write-Log "successfully installed Laps"
-    Write-host 'successfully installed Laps'
 
-    }
-catch {
-    $ErrorMessage = $_.Exception.message
-    write-log "Error installed laps: $ErrorMessage"
-    write-host "Error installed laps: $ErrorMessage"
-}
-#end region.
-Write-host 'AIB Customization: endregion Laps'
+
 #install Java
 Write-host 'AIB Customization: Install Java'
 try {
@@ -397,9 +383,24 @@ catch {
     
     write-host "Error AVDBG: $ErrorMessage"
 }
-
 Write-host 'AIB Customization: EndRegion AVDBG'
 #endregion AVDBG 
+
+#installfslogix
+write-host 'AIB customization: install fslogix'
+try{
+Invoke-WebRequest -Uri 'https://aka.ms/fslogix_download' -outfile   "C:\apps\AVD_SD_Apps\fslogix.zip"
+Start-Sleep -Seconds 20
+Expand-Archive -Path "C:\apps\AVD_SD_Apps\fslogix.zip" -DestinationPath "C:\apps\AVD_SD_Apps\fslogix\"  -Force
+Invoke-Expression -Command "C:\apps\AVD_SD_Apps\fslogix\x64\Release\FSLogixAppsSetup.exe /install /quiet /norestart"
+}
+catch{
+    $ErrorMessage = $_.Exception.message
+    
+    write-host "Error FSLOGIX: $ErrorMessage"
+}
+write-host  'AIB customization: end region fslogix'
+#endregion fslogix
 
 #removebuiltinapps
 $apps=@(     
