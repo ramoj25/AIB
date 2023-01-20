@@ -70,23 +70,6 @@ catch {
 #endregion
 Write-host 'AIB Customization: endregion TNS_Names'
 
-
-#install Bomgar
-Write-host 'AIB Customization: Install Bomgar'
-try {
-    Start-Process -filepath msiexec.exe -Wait -ErrorAction Stop -ArgumentList '/i', "C:\apps\AVD_SD_Apps\Bomgar\o\bomgar-scc-win64.msi", "KEY_INFO=w0gdc30y87ej6857zy761jj5x8h8j858e1wi7zec408c90", '/qn','/l*v',  "C:\Windows\Temp\Bomgar-INSTALL.log"
-    write-log "TNS_names installed successfully"
-    write-host "TNS_names installed successfully"
-    }
-catch {
-    $ErrorMessage = $_.Exception.message
-    write-log "Error installing TNS_names: $ErrorMessage"
-    write-host "Error installing TNS_names: $ErrorMessage"
-}
-#endregion
-Write-host 'AIB Customization: endregion Bomgar'
-
-
 Write-host 'AIB Customization: Install Lotusnotes'
 try {
     Start-Process -filepath "C:\apps\AVD_SD_Apps\LotusNotes\DistributionFiles\Windows\HCL Lotus Notes 11.0.1\Deploy-Application.exe" -Wait -ErrorAction Stop 
