@@ -126,22 +126,8 @@ catch {
 }
 #end region.
 
-#Laps
-Write-host 'AIB Customization: Install Laps'
-try {
-    
-    Start-Process -filepath msiexec.exe -Wait -ErrorAction Stop -ArgumentList '/i', "C:\apps\AVDapps\LAPS\Laps.x64.msi", TRANSFORMS="C:\apps\AVDapps\LAPS\LAPS_6.2.0.0.mst" , '/qn','/l*v',  "C:\Windows\Temp\Local_Admin_Password_Solution_6.2.0.0_EN_x64_M1-INSTALL.log"
-    Write-Log "successfully installed Laps"
-    Write-host 'successfully installed Laps'
 
-    }
-catch {
-    $ErrorMessage = $_.Exception.message
-    write-log "Error installed laps: $ErrorMessage"
-    write-host "Error installed laps: $ErrorMessage"
-}
-#end region.
-Write-host 'AIB Customization: endregion Laps'
+
 #install Java
 Write-host 'AIB Customization: Install Java'
 try {
@@ -158,7 +144,7 @@ catch {
 }
 
 #endregion Java
-Write-host 'AIB Customization: endregion Laps'
+Write-host 'AIB Customization: endregion Java'
 #Onboard Windows Defender ATP.
 Write-host 'AIB Customization: Configure Defender ATP'
 try{
@@ -274,6 +260,21 @@ catch {
 Write-host 'AIB Customization: EndRegion Putty'
 #endregion Putty 
 
+#installfslogix
+write-host 'AIB customization: install fslogix'
+try{
+Invoke-WebRequest -Uri 'https://aka.ms/fslogix_download' -outfile   "C:\apps\AVDapps\fslogix.zip"
+Start-Sleep -Seconds 20
+Expand-Archive -Path "C:\apps\AVDapps\fslogix.zip" -DestinationPath "C:\apps\AVDapps\fslogix\"  -Force
+Invoke-Expression -Command "C:\apps\AVDapps\fslogix\x64\Release\FSLogixAppsSetup.exe /install /quiet /norestart"
+}
+catch{
+    $ErrorMessage = $_.Exception.message
+    
+    write-host "Error FSLOGIX: $ErrorMessage"
+}
+write-host  'AIB customization: end region fslogix'
+#endregion fslogix
 
 
 #removal of inbuilt applications.
