@@ -359,7 +359,7 @@ Write-host 'AIB Customization: EndRegion IBM'
 #install AVDBG
 Write-host 'AIB Customization: Install AVDBG'
 try {
-  Start-Process -filepath "C:\apps\AVD_SD_Apps\AVDBG\DistributionFiles\Windows\VCC Teams Video Backgrounds Global Brand Campaign 2210\Deploy-Application.exe" -Wait -ErrorAction Stop
+  Start-Process -filepath "C:\apps\AVD_SD_Apps\AVDBG\Deploy-Application.exe" -Wait -ErrorAction Stop
     }
 catch {
     $ErrorMessage = $_.Exception.message
