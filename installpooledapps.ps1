@@ -189,7 +189,7 @@ Write-host 'AIB Customization: endregion optimized teams'
 #install VCC wallpaper
 Write-host 'AIB Customization: Configure Wallpaper'
 try {
-    Start-Process -filepath "C:\apps\AVDapps\VCC_Wallpaper\DistributionFiles\Windows\VCC Desktop Wallpaper 2210\Deploy-Application.exe" -Wait -ErrorAction Stop 
+    Start-Process -filepath "C:\apps\AVDapps\VCC_Wallpaper\Deploy-Application.exe" -Wait -ErrorAction Stop 
     Start-Sleep -Seconds 5
     write-log "VCC Wallpaper successfully"
     write-host "VCC Wallpaper successfully"
@@ -221,7 +221,7 @@ Write-host 'AIB Customization: endregion chrome'
 #install AVDBG
 Write-host 'AIB Customization: Install AVDBG'
 try {
-  Start-Process -filepath "C:\apps\AVDapps\AVDBG\DistributionFiles\Windows\VCC Teams Video Backgrounds Global Brand Campaign 2210\Deploy-Application.exe" -Wait -ErrorAction Stop
+  Start-Process -filepath "C:\apps\AVDapps\AVDBG\Deploy-Application.exe" -Wait -ErrorAction Stop
     }
 catch {
     $ErrorMessage = $_.Exception.message
