@@ -278,40 +278,31 @@ write-host  'AIB customization: end region fslogix'
 
 
 #removal of inbuilt applications.
-try{
-$appxpackage =
-"Microsoft.3DBuilder,
-Microsoft.Getstarted,
-Microsoft.MicrosoftOfficeHub,
-Microsoft.MicrosoftSolitaireCollection,
-Microsoft.People,
-Microsoft.SkypeApp,
-Microsoft.WindowsCommunicationsApps,
-Microsoft.XboxApp,
-Microsoft.ZuneMusic,
-Microsoft.ZuneVideo,
-Microsoft.BingFinance,
-Microsoft.BingNews,
-Microsoft.BingSports,
-Microsoft.BingWeather,
-Microsoft.Windows.Photos,
-Microsoft.WindowsMaps,
-Microsoft.YourPhone,
-Microsoft.WindowsSoundRecorder,
-Microsoft.WindowsAlarms,
-Microsoft.GetHelp,
-Microsoft.Microsoft3Dviewer,
-Microsoft.Messaging,
-Microsoft.MixedReality.Portal,
-Microsoft.WindowsFeedbackHub,
-Microsoft.Wallet,
-Microsoft.Print3D"
-$appxpackage=$appxpackage.Split(",")
-foreach ($appx in $appxpackage) {Get-AppxPackage $appx | Remove-AppxPackage -AllUsers}
-}
-catch{
-$ErrorMessage = $_.Exception.message
-    write-host "Error removing builtin apps: $ErrorMessage"
+$apps=@(     
+    "Microsoft.Microsoft3DViewer" #Microsoft 3D Viewer
+    "Microsoft.549981C3F5F10" #Microsoft Cortana
+    "Microsoft.WindowsFeedbackHub" #Microsoft Feedback Hub
+    "Microsoft.GetHelp" #Microsoft Get Help
+    "Microsoft.ZuneMusic" #Zune or Groove Music
+    "Microsoft.WindowsMaps" #Maps
+    "Microsoft.MicrosoftSolitaireCollection" #Microsoft Solitaire Collection
+    "Microsoft.ZuneVideo" #Zune Video, Groove Video or Movies & TV
+    "Microsoft.MicrosoftOfficeHub" #Office 2016 Hub
+    "Microsoft.SkypeApp" #Skype
+    "Microsoft.Getstarted" #Get Started Hub or Tips
+    "Microsoft.XboxApp" #Xbox
+    "Microsoft.XboxGamingOverlay" #Xbox Game Bar
+    "Microsoft.YourPhone" #Your Phone
+    "Microsoft.MixedReality.Portal" #Mixed Reality
+    "Microsoft.windowscommunicationsapps" #Mail
+)
+foreach ($app in $apps) {    
+    Write-host $app "Ready to remove"
+    Get-AppxPackage -Name $app -AllUsers | Remove-AppxPackage
+    Get-AppXProvisionedPackage -Online | Where-Object DisplayName -EQ $app | Remove-AppxProvisionedPackage -Online
+            
+    $appPath="$Env:LOCALAPPDATA\Packages\$app*"
+    Remove-Item $appPath -Recurse -Force -ErrorAction 0
 }
 write-host  "AIB: removal of applications"
 #endregion of inbuilt applications.
