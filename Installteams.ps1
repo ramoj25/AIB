@@ -28,7 +28,6 @@ Start-Process -filepath msiexec.exe -Wait -ErrorAction Stop -ArgumentList '/i c:
 write-host "downloaded webrtc and installed"
 
 #Download the installer to the C:\temp 
-Invoke-WebRequest -uri 'https://teams.microsoft.com/downloads/desktopurl?env=production&plat=windows&arch=x64&managedInstaller=true&download=true' -OutFile 'c:\temp\Teams_windows_x64.msi'
-#Install Teams
-Start-Process -filepath msiexec.exe -Wait -ErrorAction Stop -ArgumentList '/i', 'c:\temp\Teams_windows_x64.msi', '/l*v c:\temp\teams.log', 'ALLUSER=1'
+Invoke-WebRequest -Uri 'https://teams.microsoft.com/downloads/desktopurl?env=production&plat=windows&download=true&managedInstaller=true&arch=x64' -OutFile 'c:\temp\Teams.msi'
+Invoke-Expression -Command 'msiexec /i C:\temp\Teams.msi /quiet /l*v C:\temp\teamsinstall.log ALLUSER=1'
 write-host "downloaded teams and installed."
