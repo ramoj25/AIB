@@ -23,7 +23,7 @@ New-ItemProperty -ErrorAction Stop -Path "HKLM:\SOFTWARE\Microsoft\Teams" -Name 
 write-host "Finshed registry configuration"
 
 #Install the WebRTC redirect service
-Invoke-WebRequest -uri 'https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4AQBt' -OutFile 'c:\temp\MsRdcWebRTCSvc_x64.msi'
+Invoke-WebRequest -uri 'https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWWDIg' -OutFile 'c:\temp\MsRdcWebRTCSvc_x64.msi'
 Start-Process -filepath msiexec.exe -Wait -ErrorAction Stop -ArgumentList '/i c:\temp\MsRdcWebRTCSvc_x64.msi /quiet /norestart'
 write-host "downloaded webrtc and installed"
 
