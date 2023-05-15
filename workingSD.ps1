@@ -84,20 +84,20 @@ catch {
 #endregion
 Write-host 'AIB Customization: EndRegion Lotusnotes'
 
-#install Umbrella
-Write-host 'AIB Customization: Install Umbrella'
+#install Cisco Secure Client 5.0.01242
+Write-host 'AIB Customization: Install Cisco Secure client'
 try {
-    Start-Process -filepath "C:\apps\AVD_SD_Apps\Umbrella\Deploy-Application.exe" -Wait -ErrorAction Stop 
-    write-log "Umbrella installed successfully"
-    write-host "Umbrella installed successfully"
+    Start-Process -filepath "C:\apps\AVD_SD_Apps\Cisco Secure Client 5.0.01242\Deploy-Application.exe" -Wait -ErrorAction Stop 
+    write-log "Cisco Secure Client 5.0.01242 installed successfully"
+    write-host "Cisco Secure Client 5.0.01242 installed successfully"
     }
 catch {
     $ErrorMessage = $_.Exception.message
-    write-log "Error installing Umbrella: $ErrorMessage"
-    write-host "Error installing Umbrella: $ErrorMessage"
+    write-log "Error installing Cisco Secure Client 5.0.01242: $ErrorMessage"
+    write-host "Error installing Cisco Secure Client 5.0.01242: $ErrorMessage"
 }
 #endregion
-Write-host 'AIB Customization: endregion umbrella'
+Write-host 'AIB Customization: endregion Cisco Secure Client 5.0.01242'
 
 #install VCC_Fonts
 Write-host 'AIB Customization: Install vcc_fonts'
