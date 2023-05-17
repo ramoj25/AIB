@@ -65,20 +65,20 @@ catch {
 #endregion
 Write-host 'AIB Customization: endregion TNS_Names'
 
-#install Cisco Secure Client 5.0.01242
-Write-host 'AIB Customization: Install Cisco Secure Client 5.0.01242'
-try {
-    Start-Process -filepath "C:\apps\AVDapps\Cisco Secure Client 5.0.01242\Deploy-Application.exe" -Wait -ErrorAction Stop 
-    write-log "Cisco Secure Client 5.0.01242 installed successfully"
-    write-host "Cisco Secure Client 5.0.01242 installed successfully"
-    }
-catch {
-    $ErrorMessage = $_.Exception.message
-    write-log "Error installing Cisco Secure Client 5.0.01242: $ErrorMessage"
-    write-host "Error installing Cisco Secure Client 5.0.01242: $ErrorMessage"
-}
-#endregion
-Write-host 'AIB Customization: endregion Cisco Secure Client 5.0.01242'
+# #install Cisco Secure Client 5.0.01242
+# Write-host 'AIB Customization: Install Cisco Secure Client 5.0.01242'
+# try {
+#     Start-Process -filepath "C:\apps\AVDapps\Cisco Secure Client 5.0.01242\Deploy-Application.exe" -Wait -ErrorAction Stop 
+#     write-log "Cisco Secure Client 5.0.01242 installed successfully"
+#     write-host "Cisco Secure Client 5.0.01242 installed successfully"
+#     }
+# catch {
+#     $ErrorMessage = $_.Exception.message
+#     write-log "Error installing Cisco Secure Client 5.0.01242: $ErrorMessage"
+#     write-host "Error installing Cisco Secure Client 5.0.01242: $ErrorMessage"
+# }
+# #endregion
+# Write-host 'AIB Customization: endregion Cisco Secure Client 5.0.01242'
 
 #install VCC_Fonts
 Write-host 'AIB Customization: Install vcc_fonts'
