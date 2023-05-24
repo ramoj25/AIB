@@ -344,7 +344,7 @@ Write-host 'AIB Customization: EndRegion IBM'
 #install IBM
 Write-host 'AIB Customization: Install IBM'
 try {
-   Start-Process -filepath msiexec.exe -Wait -ErrorAction Stop -ArgumentList "/i","`"C:\apps\AVD_SD_Apps\IBM\a3\source\IBM Personal Communications.msi`"","TRANSFORMS=`"C:\apps\AVD_SD_Apps\IBM\a3\source\IBM_Personnal_Communications_13.0.0.mst`"","/qn","/l*v","c:\windows\temp\ibm.log"
+   Start-Process -filepath msiexec.exe  -ArgumentList "/i","`"C:\apps\AVD_SD_Apps\IBM\a3\source\IBM Personal Communications.msi`"","TRANSFORMS=`"C:\apps\AVD_SD_Apps\IBM\a3\source\IBM_Personnal_Communications_13.0.0.mst`"","/qn","/l*v","c:\windows\temp\ibm.log"
     }
 catch {
     $ErrorMessage = $_.Exception.message
