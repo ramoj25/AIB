@@ -397,7 +397,6 @@ $apps=@(
     "Microsoft.WindowsMaps" #Maps
     "Microsoft.MicrosoftSolitaireCollection" #Microsoft Solitaire Collection
     "Microsoft.ZuneVideo" #Zune Video, Groove Video or Movies & TV
-    "Microsoft.MicrosoftOfficeHub" #Office 2016 Hub
     "Microsoft.SkypeApp" #Skype
     "Microsoft.Getstarted" #Get Started Hub or Tips
     "Microsoft.XboxApp" #Xbox
@@ -413,6 +412,7 @@ foreach ($app in $apps) {
             
     $appPath="$Env:LOCALAPPDATA\Packages\$app*"
     Remove-Item $appPath -Recurse -Force -ErrorAction 0
+    Write-host $app "Removed successfully"
 }
 
 #endregionbuiltinapps
