@@ -207,8 +207,9 @@ Write-host 'AIB Customization: endregion optimized teams'
 #install SAP 
 Write-host 'AIB Customization: Install SAP'
 try {
-write-host ""
-    Start-Process -filepath "C:\apps\AVD_SD_Apps\SAP\Deploy-Application.exe" -Wait -ErrorAction Stop 
+write-host " you are here where the issue persists"
+    Start-Process -filepath "C:\apps\AVD_SD_Apps\SAP\Deploy-Application.exe" -Wait #-ErrorAction Stop 
+    
 #     write-log "SAP installed successfully"
     write-host "SAP installed successfully"
     }
