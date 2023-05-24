@@ -396,14 +396,7 @@ $apps=@(
     "Microsoft.ZuneMusic" #Zune or Groove Music
     "Microsoft.WindowsMaps" #Maps
     "Microsoft.MicrosoftSolitaireCollection" #Microsoft Solitaire Collection
-    "Microsoft.ZuneVideo" #Zune Video, Groove Video or Movies & TV
-    "Microsoft.SkypeApp" #Skype
-    "Microsoft.Getstarted" #Get Started Hub or Tips
-    "Microsoft.XboxApp" #Xbox
-    "Microsoft.XboxGamingOverlay" #Xbox Game Bar
-    "Microsoft.YourPhone" #Your Phone
-    "Microsoft.MixedReality.Portal" #Mixed Reality
-    "Microsoft.windowscommunicationsapps" #Mail
+    
 )
 foreach ($app in $apps) {    
     Write-host $app "Ready to remove"
