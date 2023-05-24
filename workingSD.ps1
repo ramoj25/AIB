@@ -209,12 +209,12 @@ Write-host 'AIB Customization: Install SAP'
 try {
 write-host ""
     Start-Process -filepath "C:\apps\AVD_SD_Apps\SAP\Deploy-Application.exe" -Wait -ErrorAction Stop 
-    write-log "SAP installed successfully"
+#     write-log "SAP installed successfully"
     write-host "SAP installed successfully"
     }
 catch {
     $ErrorMessage = $_.Exception.message
-    write-log "Error installing SAP: $ErrorMessage"
+#     write-log "Error installing SAP: $ErrorMessage"
     write-host "Error installing SAP: $ErrorMessage"
 }
 
