@@ -371,21 +371,21 @@ catch {
 Write-host 'AIB Customization: EndRegion AVDBG'
 #endregion AVDBG 
 
-# #installfslogix
-# write-host 'AIB customization: install fslogix'
-# try{
-# Invoke-WebRequest -Uri 'https://aka.ms/fslogix_download' -outfile   "C:\apps\AVD_SD_Apps\fslogix.zip"
-# Start-Sleep -Seconds 20
-# Expand-Archive -Path "C:\apps\AVD_SD_Apps\fslogix.zip" -DestinationPath "C:\apps\AVD_SD_Apps\fslogix\"  -Force
-# Invoke-Expression -Command "C:\apps\AVD_SD_Apps\fslogix\x64\Release\FSLogixAppsSetup.exe /install /quiet /norestart"
-# }
-# catch{
-#     $ErrorMessage = $_.Exception.message
+#installfslogix
+write-host 'AIB customization: install fslogix'
+try{
+Invoke-WebRequest -Uri 'https://aka.ms/fslogix_download' -outfile   "C:\apps\AVD_SD_Apps\fslogix.zip"
+Start-Sleep -Seconds 20
+Expand-Archive -Path "C:\apps\AVD_SD_Apps\fslogix.zip" -DestinationPath "C:\apps\AVD_SD_Apps\fslogix\"  -Force
+Invoke-Expression -Command "C:\apps\AVD_SD_Apps\fslogix\x64\Release\FSLogixAppsSetup.exe /install /quiet /norestart"
+}
+catch{
+    $ErrorMessage = $_.Exception.message
     
-#     write-host "Error FSLOGIX: $ErrorMessage"
-# }
-# write-host  'AIB customization: end region fslogix'
-# #endregion fslogix
+    write-host "Error FSLOGIX: $ErrorMessage"
+}
+write-host  'AIB customization: end region fslogix'
+#endregion fslogix
 
 #removebuiltinapps
 $apps=@(     
