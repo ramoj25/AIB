@@ -307,69 +307,69 @@ Write-host 'AIB Customization: EndRegion CPP client'
 #endregion CPP client
 
 
-#install IBM personal communications powershell.
-Write-host 'AIB Customization: Install IBM personal communications powershell.'
+# #install IBM personal communications powershell.
+# Write-host 'AIB Customization: Install IBM personal communications powershell.'
+# try {
+#     Start-Process -filepath "C:\apps\AVD_SD_Apps\IBM Personal Communications\Deploy-Application.exe" -Wait -ErrorAction Stop 
+#     write-log "IBM personal communications powershell. installed successfully"
+#     write-host "IBM personal communications powershell. installed successfully"
+#     }
+# catch {
+#     $ErrorMessage = $_.Exception.message
+#     write-log "Error installing IBM personal communications powershell: $ErrorMessage"
+#     write-host "Error installing IBM personal communications powershell: $ErrorMessage"
+# }
+
+# Write-host 'AIB Customization: EndRegion IBM personal communications powershell.'
+# #endregion IBM personal communications powershell.
+
+install IBM
+Write-host 'AIB Customization: Install IBM'
 try {
-    Start-Process -filepath "C:\apps\AVD_SD_Apps\IBM Personal Communications\Deploy-Application.exe" -Wait -ErrorAction Stop 
-    write-log "IBM personal communications powershell. installed successfully"
-    write-host "IBM personal communications powershell. installed successfully"
+   Start-Process -filepath msiexec.exe -Wait -ErrorAction Stop -ArgumentList "/i","`"C:\apps\AVD_SD_Apps\IBM\a2\source\Configuration\3270_hosts.msi`"","TRANSFORMS=`"C:\apps\AVD_SD_Apps\IBM\a3\source\Configuration\3270_hosts.mst`"","/qn","/l*v","c:\windows\temp\3270_hosts.log"
+      
     }
 catch {
     $ErrorMessage = $_.Exception.message
-    write-log "Error installing IBM personal communications powershell: $ErrorMessage"
-    write-host "Error installing IBM personal communications powershell: $ErrorMessage"
+    
+    write-host "Error installing IBMa2: $ErrorMessage"
 }
 
-Write-host 'AIB Customization: EndRegion IBM personal communications powershell.'
-#endregion IBM personal communications powershell.
+Write-host 'AIB Customization: EndRegion IBM'
+#endregion IBM a2
 
 #install IBM
-# Write-host 'AIB Customization: Install IBM'
-# try {
-#    Start-Process -filepath msiexec.exe -Wait -ErrorAction Stop -ArgumentList "/i","`"C:\apps\AVD_SD_Apps\IBM\a2\source\Configuration\3270_hosts.msi`"","TRANSFORMS=`"C:\apps\AVD_SD_Apps\IBM\a3\source\Configuration\3270_hosts.mst`"","/qn","/l*v","c:\windows\temp\3270_hosts.log"
-      
-#     }
-# catch {
-#     $ErrorMessage = $_.Exception.message
-    
-#     write-host "Error installing IBMa2: $ErrorMessage"
-# }
-
-# Write-host 'AIB Customization: EndRegion IBM'
-# #endregion IBM a2
-
-# #install IBM
-# Write-host 'AIB Customization: Install IBM'
-# try {
+Write-host 'AIB Customization: Install IBM'
+try {
    
-#    Start-Process -filepath msiexec.exe -Wait -ErrorAction Stop -ArgumentList "/i","`"C:\apps\AVD_SD_Apps\IBM\a2\source\cdec\cdec.msi`"","TRANSFORMS=`"C:\apps\AVD_SD_Apps\IBM\a3\source\cdec\cdec.mst`"","/qn","/l*v","c:\windows\temp\cdec.log"
+   Start-Process -filepath msiexec.exe -Wait -ErrorAction Stop -ArgumentList "/i","`"C:\apps\AVD_SD_Apps\IBM\a2\source\cdec\cdec.msi`"","TRANSFORMS=`"C:\apps\AVD_SD_Apps\IBM\a3\source\cdec\cdec.mst`"","/qn","/l*v","c:\windows\temp\cdec.log"
    
-#     }
-# catch {
-#     $ErrorMessage = $_.Exception.message
+    }
+catch {
+    $ErrorMessage = $_.Exception.message
     
-#     write-host "Error installing IBMa2: $ErrorMessage"
-# }
+    write-host "Error installing IBMa2: $ErrorMessage"
+}
 
-# Write-host 'AIB Customization: EndRegion IBM'
-# #endregion IBM a2
-
-
+Write-host 'AIB Customization: EndRegion IBM'
+#endregion IBM a2
 
 
-# #install IBM
-# Write-host 'AIB Customization: Install IBM'
-# try {
-#    Start-Process -filepath msiexec.exe  -ArgumentList "/i","`"C:\apps\AVD_SD_Apps\IBM\a3\source\IBM Personal Communications.msi`"","TRANSFORMS=`"C:\apps\AVD_SD_Apps\IBM\a3\source\IBM_Personnal_Communications_13.0.0.mst`"","/qn","/l*v","c:\windows\temp\ibm.log"
-#     }
-# catch {
-#     $ErrorMessage = $_.Exception.message
+
+
+#install IBM
+Write-host 'AIB Customization: Install IBM'
+try {
+   Start-Process -filepath msiexec.exe  -ArgumentList "/i","`"C:\apps\AVD_SD_Apps\IBM\a3\source\IBM Personal Communications.msi`"","TRANSFORMS=`"C:\apps\AVD_SD_Apps\IBM\a3\source\IBM_Personnal_Communications_13.0.0.mst`"","/qn","/l*v","c:\windows\temp\ibm.log"
+    }
+catch {
+    $ErrorMessage = $_.Exception.message
     
-#     write-host "Error IBM a3: $ErrorMessage"
-# }
+    write-host "Error IBM a3: $ErrorMessage"
+}
 
-# Write-host 'AIB Customization: EndRegion IBM'
-# #endregion IBM a3
+Write-host 'AIB Customization: EndRegion IBM'
+#endregion IBM a3
 
 
 
