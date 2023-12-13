@@ -10,7 +10,20 @@ function Write-Log {
 #install AIP
 Write-host 'AIB Customization: Install AIP'
 try {
-    Start-Process -filepath "C:\apps\AVDapps\AIP\DistributionFiles\Windows\Microsoft AIP 2.13.49\Deploy-Application.exe" -Wait -ErrorAction Stop 
+    Start-Process -filepath "C:\apps\AVDapps\AIP\Deploy-Application.exe" -Wait -ErrorAction Stop 
+    write-log "AIP installed successfully"
+    write-host "AIP installed successfully"
+    }
+catch {
+    $ErrorMessage = $_.Exception.message
+    write-log "Error installing AIP: $ErrorMessage"
+    Write-host "Error installing AIP: $ErrorMessage"
+}
+#endregion
+#install AIP
+Write-host 'AIB Customization: Blueprism'
+try {
+    Start-Process -filepath "C:\apps\AVDapps\Blueprism\DistributionFiles\Windows\Blue Prism 6.8.1\Deploy-Application.exe" -Wait -ErrorAction Stop 
     write-log "AIP installed successfully"
     write-host "AIP installed successfully"
     }
@@ -65,20 +78,20 @@ catch {
 #endregion
 Write-host 'AIB Customization: endregion TNS_Names'
 
-# #install Cisco Secure Client 5.0.01242
-# Write-host 'AIB Customization: Install Cisco Secure Client 5.0.01242'
-# try {
-#     Start-Process -filepath "C:\apps\AVDapps\Cisco Secure Client 5.0.01242\Deploy-Application.exe" -Wait -ErrorAction Stop 
-#     write-log "Cisco Secure Client 5.0.01242 installed successfully"
-#     write-host "Cisco Secure Client 5.0.01242 installed successfully"
-#     }
-# catch {
-#     $ErrorMessage = $_.Exception.message
-#     write-log "Error installing Cisco Secure Client 5.0.01242: $ErrorMessage"
-#     write-host "Error installing Cisco Secure Client 5.0.01242: $ErrorMessage"
-# }
-# #endregion
-# Write-host 'AIB Customization: endregion Cisco Secure Client 5.0.01242'
+#install Umbrella
+Write-host 'AIB Customization: Install Umbrella'
+try {
+    Start-Process -filepath "C:\apps\AVDapps\Umbrella\Deploy-Application.exe" -Wait -ErrorAction Stop 
+    write-log "Umbrella installed successfully"
+    write-host "Umbrella installed successfully"
+    }
+catch {
+    $ErrorMessage = $_.Exception.message
+    write-log "Error installing Umbrella: $ErrorMessage"
+    write-host "Error installing Umbrella: $ErrorMessage"
+}
+#endregion
+Write-host 'AIB Customization: endregion umbrella'
 
 #install VCC_Fonts
 Write-host 'AIB Customization: Install vcc_fonts'
@@ -126,8 +139,22 @@ catch {
 }
 #end region.
 
+#Laps
+Write-host 'AIB Customization: Install Laps'
+try {
+    
+    Start-Process -filepath msiexec.exe -Wait -ErrorAction Stop -ArgumentList '/i', "C:\apps\AVDapps\LAPS\Laps.x64.msi", TRANSFORMS="C:\apps\AVDapps\LAPS\LAPS_6.2.0.0.mst" , '/qn','/l*v',  "C:\Windows\Temp\Local_Admin_Password_Solution_6.2.0.0_EN_x64_M1-INSTALL.log"
+    Write-Log "successfully installed Laps"
+    Write-host 'successfully installed Laps'
 
-
+    }
+catch {
+    $ErrorMessage = $_.Exception.message
+    write-log "Error installed laps: $ErrorMessage"
+    write-host "Error installed laps: $ErrorMessage"
+}
+#end region.
+Write-host 'AIB Customization: endregion Laps'
 #install Java
 Write-host 'AIB Customization: Install Java'
 try {
@@ -144,14 +171,14 @@ catch {
 }
 
 #endregion Java
-Write-host 'AIB Customization: endregion Java'
+Write-host 'AIB Customization: endregion Laps'
 #Onboard Windows Defender ATP.
 Write-host 'AIB Customization: Configure Defender ATP'
 try{
 $dir='C:\WINDOWS\System32\GroupPolicy\Machine\Scripts\Startup'
 New-Item -Path $dir -ItemType Directory -force
 Copy-Item -path "c:\apps\AVDapps\Onboard ATP\Onboard-NonPersistentMachine.ps1" -Destination $dir
-write-log "Copying Onboard-NonPersistentMachine : success" 
+write-log "Error copying Onboard-NonPersistentMachine : success" 
 }
 catch{
     $ErrorMessage = $_.Exception.message
@@ -160,7 +187,6 @@ catch{
 }
 try {
     Copy-Item -path "c:\apps\AVDapps\Onboard ATP\WindowsDefenderATPOnboardingScript.cmd" -Destination $dir
-    write-log "Copying atponboardingscript.cmd"
 }
 catch {
     $ErrorMessage = $_.Exception.message
@@ -170,27 +196,28 @@ catch {
 #endregion of defender ATP.
 Write-host 'AIB Customization: endregion defender ATP'
 
-# install optimized teams.
-# Write-host 'AIB Customization: install optimized teams'
+#install optimized teams.
+Write-host 'AIB Customization: install optimized teams'
 
-# try {
-#     Start-Process -filepath "C:\apps\AVDapps\AVDTeams\DistributionFiles\Windows\Microsoft Teams for AVD 1.5\Deploy-Application.exe" -Wait -ErrorAction Stop 
-#     write-log "AVD Teams installed successfully."
-#     write-host "AVD Teams installed successfully."
-#     }
-# catch {
-#     $ErrorMessage = $_.Exception.message
-#     write-log "Error installing AVD Teams: $ErrorMessage"
-#     write-host "Error installing AVD Teams: $ErrorMessage"
-# }
-# #endregion of teams.
-# Write-host 'AIB Customization: endregion optimized teams'
+try {
+    Start-Process -filepath "C:\apps\AVDapps\AVDTeams\Deploy-Application.exe" -Wait -ErrorAction Stop 
+    write-log "AVD Teams installed successfully."
+    write-host "AVD Teams installed successfully."
+    }
+catch {
+    $ErrorMessage = $_.Exception.message
+    write-log "Error installing AVD Teams: $ErrorMessage"
+    write-host "Error installing AVD Teams: $ErrorMessage"
+}
+#endregion of teams.
+Write-host 'AIB Customization: endregion optimized teams'
 
 #install VCC wallpaper
 Write-host 'AIB Customization: Configure Wallpaper'
 try {
     Start-Process -filepath "C:\apps\AVDapps\VCC_Wallpaper\Deploy-Application.exe" -Wait -ErrorAction Stop 
     Start-Sleep -Seconds 5
+    #Start-Process powershell.exe "C:\apps\AVDapps\VCC_Wallpaper\vccWALLPAPER.ps1"
     write-log "VCC Wallpaper successfully"
     write-host "VCC Wallpaper successfully"
     New-Item -path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization" -Force
@@ -203,109 +230,44 @@ catch {
     write-log "Error setting wallpaper: $ErrorMessage"
 }
 #endregion
-
-#install Chrome
-Write-host 'AIB Customization: Install Chrome'
-try {
-    Start-Process -filepath "C:\apps\AVDapps\Google Chrome 90.0.4430.212\Deploy-Application.exe" -Wait -ErrorAction Stop 
-    write-log "Chrome installed successfully"
-    write-host "Chrome installed successfully"
-    }
-catch {
-    $ErrorMessage = $_.Exception.message
-    write-log "Error installing Chrome: $ErrorMessage"
-    write-host "Error installing Chrome: $ErrorMessage"
-}
-Write-host 'AIB Customization: endregion chrome'
-
-#install AVDBG
-Write-host 'AIB Customization: Install AVDBG'
-try {
-  Start-Process -filepath "C:\apps\AVDapps\AVDBG\Deploy-Application.exe" -Wait -ErrorAction Stop
-    }
-catch {
-    $ErrorMessage = $_.Exception.message
-    
-    write-host "Error AVDBG: $ErrorMessage"
-}
-
-Write-host 'AIB Customization: EndRegion AVDBG'
-#endregion AVDBG 
-
-#install Notepadd
-Write-host 'AIB Customization: Install Notepadd'
-try {
-  Start-Process -filepath "C:\apps\AVDapps\Notepad++\DistributionFiles\Windows\Open Software Notepad++ 8.4\Deploy-Application.exe" -Wait -ErrorAction Stop
-    }
-catch {
-    $ErrorMessage = $_.Exception.message
-    
-    write-host "Error Notepadd: $ErrorMessage"
-}
-
-Write-host 'AIB Customization: EndRegion Notepadd'
-#endregion Notepadd 
-
-#install Putty
-Write-host 'AIB Customization: Install Putty'
-try {
- Start-Process -filepath msiexec.exe -Wait -ErrorAction Stop -ArgumentList '/i', "C:\apps\AVDapps\Putty\OriginalFiles\putty-64bit-0.74-installer.msi", '/qn','/l*v',  "C:\Windows\Temp\Putty-INSTALL.log"
-    }
-catch {
-    $ErrorMessage = $_.Exception.message
-    
-    write-host "Error Putty: $ErrorMessage"
-}
-
-Write-host 'AIB Customization: EndRegion Putty'
-#endregion Putty 
-
-#installfslogix
-write-host 'AIB customization: install fslogix'
+Write-host 'AIB Customization: endregion Wallpaper'
+#removal of inbuilt applications.
 try{
-Invoke-WebRequest -Uri 'https://aka.ms/fslogix_download' -outfile   "C:\apps\AVDapps\fslogix.zip"
-Start-Sleep -Seconds 20
-Expand-Archive -Path "C:\apps\AVDapps\fslogix.zip" -DestinationPath "C:\apps\AVDapps\fslogix\"  -Force
-Invoke-Expression -Command "C:\apps\AVDapps\fslogix\x64\Release\FSLogixAppsSetup.exe /install /quiet /norestart"
+$appxpackage =
+"Microsoft.3DBuilder,
+Microsoft.Getstarted,
+Microsoft.MicrosoftOfficeHub,
+Microsoft.MicrosoftSolitaireCollection,
+Microsoft.People,
+Microsoft.SkypeApp,
+Microsoft.WindowsCommunicationsApps,
+Microsoft.XboxApp,
+Microsoft.ZuneMusic,
+Microsoft.ZuneVideo,
+Microsoft.BingFinance,
+Microsoft.BingNews,
+Microsoft.BingSports,
+Microsoft.BingWeather,
+Microsoft.Windows.Photos,
+Microsoft.WindowsMaps,
+Microsoft.YourPhone,
+Microsoft.WindowsSoundRecorder,
+Microsoft.WindowsAlarms,
+Microsoft.GetHelp,
+Microsoft.Microsoft3Dviewer,
+Microsoft.Messaging,
+Microsoft.MixedReality.Portal,
+Microsoft.WindowsFeedbackHub,
+Microsoft.Wallet,
+Microsoft.Print3D,"
+$appxpackage=$appxpackage.Split(",")
+foreach ($appx in $appxpackage) {Get-AppxPackage $appx | Remove-AppxPackage -AllUsers}
 }
 catch{
-    $ErrorMessage = $_.Exception.message
-    
-    write-host "Error FSLOGIX: $ErrorMessage"
-}
-write-host  'AIB customization: end region fslogix'
-#endregion fslogix
-
-
-#removal of inbuilt applications.
-$apps=@(     
-    "Microsoft.Microsoft3DViewer" #Microsoft 3D Viewer
-    "Microsoft.549981C3F5F10" #Microsoft Cortana
-    "Microsoft.WindowsFeedbackHub" #Microsoft Feedback Hub
-    "Microsoft.GetHelp" #Microsoft Get Help
-    "Microsoft.ZuneMusic" #Zune or Groove Music
-    "Microsoft.WindowsMaps" #Maps
-    "Microsoft.MicrosoftSolitaireCollection" #Microsoft Solitaire Collection
-    "Microsoft.ZuneVideo" #Zune Video, Groove Video or Movies & TV
-    "Microsoft.MicrosoftOfficeHub" #Office 2016 Hub
-    "Microsoft.SkypeApp" #Skype
-    "Microsoft.Getstarted" #Get Started Hub or Tips
-    "Microsoft.XboxApp" #Xbox
-    "Microsoft.XboxGamingOverlay" #Xbox Game Bar
-    "Microsoft.YourPhone" #Your Phone
-    "Microsoft.MixedReality.Portal" #Mixed Reality
-    "Microsoft.windowscommunicationsapps" #Mail
-)
-foreach ($app in $apps) {    
-    Write-host $app "Ready to remove"
-    Get-AppxPackage -Name $app -AllUsers | Remove-AppxPackage
-    Get-AppXProvisionedPackage -Online | Where-Object DisplayName -EQ $app | Remove-AppxProvisionedPackage -Online
-            
-    $appPath="$Env:LOCALAPPDATA\Packages\$app*"
-    Remove-Item $appPath -Recurse -Force -ErrorAction 0
+$ErrorMessage = $_.Exception.message
+    write-host "Error removing builtin apps: $ErrorMessage"
 }
 write-host  "AIB: removal of applications"
 #endregion of inbuilt applications.
-
 
 
