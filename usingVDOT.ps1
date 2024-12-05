@@ -1,3 +1,4 @@
+#testing the pull request to modify the existing code.
  # OS Optimizations for WVD
  write-host 'AIB Customization: OS Optimizations for WVD'
  $appName = 'Optimize'
@@ -24,4 +25,4 @@
 .\Windows_VDOT.ps1 -Verbose -AcceptEula
   write-host 'AIB Customization: Finished OS Optimizations script'
  
- 
+  

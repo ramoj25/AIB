@@ -130,10 +130,6 @@ try {
     Start-Process -filepath "C:\apps\AVDapps\VCC_Templates\Deploy-Application.exe" -Wait -ErrorAction Stop 
     write-log "VCC_Templates installed successfully"
     write-host "VCC_Templates installed successfully"
-    New-Item -path "HKLM:\Software\Microsoft\Office\16.0\Common\General\" -Force
-    set-itemproperty "HKLM:\Software\Microsoft\Office\16.0\Common\General\" -Name sharedtemplates -Value "C:\ProgramData\Microsoft\Windows\Corporate Templates"
-    write-log "VCC_Templates added to registry successfully"
-    write-host "VCC_Templates added to registry successfully"
     }
 catch {
     $ErrorMessage = $_.Exception.message
@@ -154,18 +150,6 @@ catch {
     write-log "Error setting up start menu: $ErrorMessage"
 }
 #end region.
-
-#MSEdge settings.
-# #Set-MicrosoftEdgeSetting.ps1 -RunMode Stage
-# try {
-#     Start-Process powershell.exe  "C:\apps\AVDapps\Set-MicrosoftEdgeSetting.ps1  -RunMode Execute"
-#     write-log "msedge settings configured successfully"
-#     }
-# catch {
-#     $ErrorMessage = $_.Exception.message
-#     write-log "Error configuring msedge settings: $ErrorMessage"
-# }
-# #end region.
 
 #Laps
 Write-host 'AIB Customization: Install Laps'
@@ -245,7 +229,6 @@ Write-host 'AIB Customization: Configure Wallpaper'
 try {
     Start-Process -filepath "C:\apps\AVDapps\VCC_Wallpaper\Deploy-Application.exe" -Wait -ErrorAction Stop 
     Start-Sleep -Seconds 5
-    #Start-Process powershell.exe "C:\apps\AVDapps\VCC_Wallpaper\vccWALLPAPER.ps1"
     write-log "VCC Wallpaper successfully"
     write-host "VCC Wallpaper successfully"
     New-Item -path "HKLM:\Control Panel\Desktop" -Force
@@ -273,20 +256,17 @@ $apps=@(
     "Microsoft.ZuneVideo" #Zune Video, Groove Video or Movies & TV
     "Microsoft.MicrosoftOfficeHub" #Office 2016 Hub
     "Microsoft.SkypeApp" #Skype
-    "Microsoft.MicrosoftStickyNotes" # Sticky Notes
     "Microsoft.Getstarted" #Get Started Hub or Tips
-    "Microsoft.WindowsSoundRecorder" # Voice Recorder
     "Microsoft.XboxApp" #Xbox
     "Microsoft.XboxGamingOverlay" #Xbox Game Bar
     "Microsoft.YourPhone" #Your Phone
     "Microsoft.MixedReality.Portal" #Mixed Reality
-    "Microsoft.People" #People
     "Microsoft.windowscommunicationsapps" #Mail
 )
 foreach ($app in $apps) {    
     Write-host $app "Ready to remove"
     Get-AppxPackage -Name $app -AllUsers | Remove-AppxPackage
-    Get-AppXProvisionedPackage -Online | where DisplayName -EQ $app | Remove-AppxProvisionedPackage -Online
+    Get-AppXProvisionedPackage -Online | Where-Object DisplayName -EQ $app | Remove-AppxProvisionedPackage -Online
             
     $appPath="$Env:LOCALAPPDATA\Packages\$app*"
     Remove-Item $appPath -Recurse -Force -ErrorAction 0
